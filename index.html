@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patricia Kyle S. Navalta | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="aurora">
+  <span class="orb o1"></span>
+  <span class="orb o2"></span>
+  <span class="orb o3"></span>
+  <span class="orb o4"></span>
+</div>
+
+<header class="topbar">
+  <div class="top-row">
+    <span class="brand">PKN<b>.</b></span>
+    <nav class="menu">
+      <button data-open="home">Home</button>
+      <button data-open="about">About Me</button>
+      <button data-open="education">Educational Attainment</button>
+      <button data-open="certifications">Certifications</button>
+      <button data-open="family">Family</button>
+    </nav>
+    <span id="clock"></span>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</header>
+
+<div class="viewport">
+
+  <!-- ================= HOME ================= -->
+  <section class="page home active" id="home">
+    <div class="intro">
+      <p class="hello">Hello, I’m</p>
+      <h1>NAVALTA<span>PATRICIA KYLE S.</span></h1>
+      <p class="role">I love <span id="typed"></span><span class="caret">|</span></p>
+      <p class="lead">Website Technology student building clean, fast and thoughtful websites.</p>
+      <div class="btns">
+        <button class="btn solid" data-open="about">About me</button>
+        <a class="btn" href="https://www.facebook.com/patriciakyle.nvlta" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn" href="https://www.instagram.com/cialattee_/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+
+    <div class="stage">
+      <span class="chip c1">Creative</span>
+      <span class="chip c2">Curious</span>
+      <span class="chip c3">Detail-driven</span>
+      <span class="chip c4">&lt;coding/&gt;</span>
+      <div class="id-card" id="card">
+        <!-- HOME PHOTO: save your picture as images/profile.jpg -->
+        <div class="slot photo" data-ph="PK">
+          <img src="images/profile.jpg" alt="Patricia Kyle S. Navalta" onerror="this.remove()">
+          <span>+ Add photo</span>
+        </div>
+        <div class="id-info">
+          <strong>Website Technology</strong>
+          <small>Student · Web Developer in progress</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ME ================= -->
+  <section class="page" id="about">
+    <div class="sheet wide">
+      <p class="eyebrow">01 / About Me</p>
+      <h2>About me</h2>
+      <div class="about-grid">
+        <!-- ABOUT PHOTO: images/about.jpg -->
+        <div class="slot tall">
+          <img src="images/about.jpg" alt="About me photo" onerror="this.remove()">
+          <span>+ Add photo</span>
+        </div>
+        <div>
+          <p>I’m Patricia Kyle, a Website Technology student who loves turning ideas into clean, working websites. I enjoy coding, polishing small details, and learning something new with every project.</p>
+          <div class="facts">
+            <div><b>Name</b>Patricia Kyle S. Navalta</div>
+            <div><b>Major</b>Website Technology</div>
+            <div><b>Loves</b>Coding</div>
+          </div>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>VS Code &amp; Git</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATIONAL ATTAINMENT ================= -->
+  <section class="page" id="education">
+    <div class="sheet wide">
+      <p class="eyebrow">02 / Educational Attainment</p>
+      <h2>Educational Attainment</h2>
+      <div class="timeline">
+
+        <article class="edu">
+          <div class="slot logo"><img src="images/college.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <div>
+            <small>Tertiary · 20XX – Present</small>
+            <h3>Your College / University Name</h3>
+            <p>Bachelor’s degree in Website Technology</p>
+          </div>
+        </article>
+
+        <article class="edu">
+          <div class="slot logo"><img src="images/shs.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <div>
+            <small>Senior High School · 20XX – 20XX</small>
+            <h3>Your Senior High School Name</h3>
+            <p>Strand / track</p>
+          </div>
+        </article>
+
+        <article class="edu">
+          <div class="slot logo"><img src="images/jhs.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <div>
+            <small>Junior High School · 20XX – 20XX</small>
+            <h3>Your Junior High School Name</h3>
+            <p>Add honors or details here</p>
+          </div>
+        </article>
+
+        <article class="edu">
+          <div class="slot logo"><img src="images/elementary.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <div>
+            <small>Elementary · 20XX – 20XX</small>
+            <h3>Your Elementary School Name</h3>
+            <p>Add honors or details here</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CERTIFICATIONS ================= -->
+  <section class="page" id="certifications">
+    <div class="sheet wide">
+      <p class="eyebrow">03 / Certifications</p>
+      <h2>Certifications</h2>
+      <p class="note">Click a certificate to view it larger.</p>
+      <div class="cert-grid">
+
+        <figure class="cert">
+          <div class="slot wide-img zoom"><img src="images/cert1.jpg" alt="Certificate 1" onerror="this.remove()"><span>+ Add certificate</span></div>
+          <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
+        </figure>
+
+        <figure class="cert">
+          <div class="slot wide-img zoom"><img src="images/cert2.jpg" alt="Certificate 2" onerror="this.remove()"><span>+ Add certificate</span></div>
+          <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
+        </figure>
+
+        <figure class="cert">
+          <div class="slot wide-img zoom"><img src="images/cert3.jpg" alt="Certificate 3" onerror="this.remove()"><span>+ Add certificate</span></div>
+          <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAMILY ================= -->
+  <section class="page" id="family">
+    <div class="sheet wide">
+      <p class="eyebrow">04 / Family</p>
+      <h2>Family</h2>
+      <div class="fam-grid">
+
+        <figure class="member">
+          <div class="slot square"><img src="images/mother.jpg" alt="Mother" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Mother’s Name</b><small>Mother</small></figcaption>
+        </figure>
+
+        <figure class="member">
+          <div class="slot square"><img src="images/father.jpg" alt="Father" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Father’s Name</b><small>Father</small></figcaption>
+        </figure>
+
+        <figure class="member">
+          <div class="slot square"><img src="images/sibling1.jpg" alt="Sibling" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Sibling’s Name</b><small>Sibling</small></figcaption>
+        </figure>
+
+        <figure class="member">
+          <div class="slot square"><img src="images/family.jpg" alt="Family photo" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Family Photo</b><small>Together</small></figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="lightbox" id="lightbox"><img alt=""><button aria-label="Close">×</button></div>
+<div class="cursor" id="cursor"></div>
+<input type="file" id="picker" accept="image/*" hidden>
+<script src="script.js"></script>
+</body>
+</html>
