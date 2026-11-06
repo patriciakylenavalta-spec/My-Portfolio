@@ -5,26 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Patricia Kyle S. Navalta | Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Mulish:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="navbar">
-  <a class="brand" href="#home">Patricia<b>.</b></a>
+  <button class="brand" data-open="home">Patricia<b>.</b></button>
   <nav class="menu" id="menu">
-    <a href="#home" class="on">Home</a>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#family">Family</a>
+    <button data-open="home" class="on">Home</button>
+    <button data-open="personal">Personal Information</button>
+    <button data-open="education">Education</button>
+    <button data-open="certifications">Certifications</button>
+    <button data-open="family">Family</button>
   </nav>
 </header>
 
-<main>
+<div class="viewport">
 
   <!-- ================= HOME ================= -->
-  <section class="section hero" id="home">
+  <section class="page home active" id="home">
     <div class="hero-text">
       <p class="welcome">Welcome</p>
       <h1>Hello Everyone I’m <span>Patricia</span></h1>
@@ -38,8 +38,8 @@
       </div>
 
       <div class="btns">
-        <a class="btn solid" href="#about">About me <span>→</span></a>
-        <a class="btn outline" href="#certifications">Certifications</a>
+        <button class="btn solid" data-open="personal">Personal Info <span>→</span></button>
+        <button class="btn outline" data-open="certifications">Certifications</button>
       </div>
 
       <div class="socials">
@@ -65,126 +65,162 @@
     </div>
   </section>
 
-  <!-- ================= ABOUT ================= -->
-  <section class="section" id="about">
-    <div class="about-grid">
-      <div class="about-photo">
-        <div class="phone small">
-          <!-- ABOUT PHOTO: images/about.jpg -->
-          <div class="slot tall">
-            <img src="images/about.jpg" alt="About me photo" onerror="this.remove()">
-            <span>+ Add photo</span>
+  <!-- ================= PERSONAL INFORMATION ================= -->
+  <section class="page" id="personal">
+    <div class="pi">
+
+      <aside class="pi-side">
+        <code class="tag">&lt;about /&gt;</code>
+        <h2>Personal <span>Information</span></h2>
+        <p>A little more about who I am, what I enjoy, and what I bring to the table.</p>
+      </aside>
+
+      <div class="pi-main">
+        <h3 class="sub"><i>//</i> About Me</h3>
+        <p class="para">Hi, I’m <b>Patricia Kyle S. Navalta</b>, a Website Technology student who loves turning ideas into clean, working websites. I’ll show you how a page comes together behind the scenes, from the first line of HTML to the final polish.</p>
+        <p class="para">My focus is to create work that not only looks good but leaves a lasting impression. I enjoy coding, perfecting small details, and learning something new with every project.</p>
+
+        <div class="profile">
+          <h3 class="sub"><i>//</i> My Profile</h3>
+          <div class="pgrid">
+            <div class="row"><span>FULL NAME</span><p>Patricia Kyle S. Navalta</p></div>
+            <div class="row"><span>COURSE</span><p>Website Technology</p></div>
+            <div class="row"><span>SCHOOL</span><p>Your School Name</p></div>
+            <div class="row"><span>BIRTHDAY</span><p>Month DD, YYYY</p></div>
           </div>
         </div>
-        <div class="tag-box"><b>Web Tech</b><small>Student</small></div>
+
+        <div class="lists">
+          <div>
+            <h3 class="sub"><i>//</i> Interests</h3>
+            <ul>
+              <li>Web development</li>
+              <li>Coding and problem solving</li>
+              <li>Clean design</li>
+              <li>Technology and gadgets</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="sub"><i>//</i> Hobbies</h3>
+            <ul>
+              <li>Add your hobby</li>
+              <li>Add your hobby</li>
+              <li>Add your hobby</li>
+              <li>Add your hobby</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="sub"><i>//</i> Strengths</h3>
+            <ul>
+              <li>Add your strength</li>
+              <li>Add your strength</li>
+              <li>Add your strength</li>
+              <li>Add your strength</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="about-text">
-        <h2>About me</h2>
-        <p>I’m Patricia Kyle, a Website Technology student who loves turning ideas into clean, working websites. I enjoy coding, polishing small details, and learning something new with every project.</p>
-
-        <div class="info"><i>👤</i><div><b>Name</b><small>Patricia Kyle S. Navalta</small></div></div>
-        <div class="info"><i>🎓</i><div><b>Major</b><small>Website Technology</small></div></div>
-        <div class="info"><i>💻</i><div><b>Loves</b><small>Coding</small></div></div>
-
-        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>VS Code &amp; Git</span></div>
-      </div>
     </div>
   </section>
 
   <!-- ================= EDUCATION ================= -->
-  <section class="section" id="education">
-    <h2 class="title">Educational Attainment</h2>
-    <div class="card-grid edu-grid">
+  <section class="page" id="education">
+    <div class="wrap">
+      <h2 class="title">Educational Attainment</h2>
+      <div class="card-grid edu-grid">
 
-      <article class="card edu">
-        <div class="slot logo"><img src="images/college.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
-        <small>Tertiary · 20XX – Present</small>
-        <h3>Your College / University Name</h3>
-        <p>Bachelor’s degree in Website Technology</p>
-      </article>
+        <article class="card edu">
+          <div class="slot logo"><img src="images/college.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <small>Tertiary · 20XX – Present</small>
+          <h3>Your College / University Name</h3>
+          <p>Bachelor’s degree in Website Technology</p>
+        </article>
 
-      <article class="card edu">
-        <div class="slot logo"><img src="images/download1.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
-        <small>Senior High School · 20XX – 20XX</small>
-        <h3>Your Senior High School Name</h3>
-        <p>Strand / track</p>
-      </article>
+        <article class="card edu">
+          <div class="slot logo"><img src="images/download1.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <small>Senior High School · 20XX – 20XX</small>
+          <h3>Your Senior High School Name</h3>
+          <p>Strand / track</p>
+        </article>
 
-      <article class="card edu">
-        <div class="slot logo"><img src="images/jhs.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
-        <small>Junior High School · 20XX – 20XX</small>
-        <h3>Your Junior High School Name</h3>
-        <p>Add honors or details here</p>
-      </article>
+        <article class="card edu">
+          <div class="slot logo"><img src="images/jhs.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <small>Junior High School · 20XX – 20XX</small>
+          <h3>Your Junior High School Name</h3>
+          <p>Add honors or details here</p>
+        </article>
 
-      <article class="card edu">
-        <div class="slot logo"><img src="images/elementary.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
-        <small>Elementary · 20XX – 20XX</small>
-        <h3>Your Elementary School Name</h3>
-        <p>Add honors or details here</p>
-      </article>
+        <article class="card edu">
+          <div class="slot logo"><img src="images/elementary.jpg" alt="" onerror="this.remove()"><span>+ Logo</span></div>
+          <small>Elementary · 20XX – 20XX</small>
+          <h3>Your Elementary School Name</h3>
+          <p>Add honors or details here</p>
+        </article>
 
+      </div>
     </div>
   </section>
 
   <!-- ================= CERTIFICATIONS ================= -->
-  <section class="section" id="certifications">
-    <h2 class="title">Certifications</h2>
-    <p class="note">Click a certificate to view it larger.</p>
-    <div class="card-grid cert-grid">
+  <section class="page" id="certifications">
+    <div class="wrap">
+      <h2 class="title">Certifications</h2>
+      <p class="note">Click a certificate to view it larger.</p>
+      <div class="card-grid cert-grid">
 
-      <figure class="card cert">
-        <div class="slot wide-img zoom"><img src="images/cert1.jpg" alt="Certificate 1" onerror="this.remove()"><span>+ Add certificate</span></div>
-        <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
-      </figure>
+        <figure class="card cert">
+          <div class="slot wide-img zoom"><img src="images/cert1.jpg" alt="Certificate 1" onerror="this.remove()"><span>+ Add certificate</span></div>
+          <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
+        </figure>
 
-      <figure class="card cert">
-        <div class="slot wide-img zoom"><img src="images/cert2.jpg" alt="Certificate 2" onerror="this.remove()"><span>+ Add certificate</span></div>
-        <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
-      </figure>
+        <figure class="card cert">
+          <div class="slot wide-img zoom"><img src="images/cert2.jpg" alt="Certificate 2" onerror="this.remove()"><span>+ Add certificate</span></div>
+          <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
+        </figure>
 
-      <figure class="card cert">
-        <div class="slot wide-img zoom"><img src="images/cert3.jpg" alt="Certificate 3" onerror="this.remove()"><span>+ Add certificate</span></div>
-        <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
-      </figure>
+        <figure class="card cert">
+          <div class="slot wide-img zoom"><img src="images/cert3.jpg" alt="Certificate 3" onerror="this.remove()"><span>+ Add certificate</span></div>
+          <figcaption><b>Certificate Title</b><small>Issuer · Year</small></figcaption>
+        </figure>
 
+      </div>
     </div>
   </section>
 
   <!-- ================= FAMILY ================= -->
-  <section class="section" id="family">
-    <h2 class="title">Family</h2>
-    <div class="card-grid fam-grid">
+  <section class="page" id="family">
+    <div class="wrap">
+      <h2 class="title">Family</h2>
+      <div class="card-grid fam-grid">
 
-      <figure class="card member">
-        <div class="slot square"><img src="images/mother.jpg" alt="Mother" onerror="this.remove()"><span>+ Add photo</span></div>
-        <figcaption><b>Mother’s Name</b><small>Mother</small></figcaption>
-      </figure>
+        <figure class="card member">
+          <div class="slot square"><img src="images/mother.jpg" alt="Mother" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Mother’s Name</b><small>Mother</small></figcaption>
+        </figure>
 
-      <figure class="card member">
-        <div class="slot square"><img src="images/father.jpg" alt="Father" onerror="this.remove()"><span>+ Add photo</span></div>
-        <figcaption><b>Father’s Name</b><small>Father</small></figcaption>
-      </figure>
+        <figure class="card member">
+          <div class="slot square"><img src="images/father.jpg" alt="Father" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Father’s Name</b><small>Father</small></figcaption>
+        </figure>
 
-      <figure class="card member">
-        <div class="slot square"><img src="images/sibling1.jpg" alt="Sibling" onerror="this.remove()"><span>+ Add photo</span></div>
-        <figcaption><b>Sibling’s Name</b><small>Sibling</small></figcaption>
-      </figure>
+        <figure class="card member">
+          <div class="slot square"><img src="images/sibling1.jpg" alt="Sibling" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Sibling’s Name</b><small>Sibling</small></figcaption>
+        </figure>
 
-      <figure class="card member">
-        <div class="slot square"><img src="images/family.jpg" alt="Family photo" onerror="this.remove()"><span>+ Add photo</span></div>
-        <figcaption><b>Family Photo</b><small>Together</small></figcaption>
-      </figure>
+        <figure class="card member">
+          <div class="slot square"><img src="images/family.jpg" alt="Family photo" onerror="this.remove()"><span>+ Add photo</span></div>
+          <figcaption><b>Family Photo</b><small>Together</small></figcaption>
+        </figure>
 
+      </div>
     </div>
   </section>
 
-</main>
+</div>
 
-<footer class="footer">
-  <p>© <span id="year"></span> Patricia Kyle S. Navalta · Built with HTML, CSS &amp; JavaScript</p>
-</footer>
+<footer class="footer">© <span id="year"></span> Patricia Kyle S. Navalta · Built with HTML, CSS &amp; JavaScript</footer>
 
 <div class="lightbox" id="lightbox"><img alt=""><button aria-label="Close">×</button></div>
 <input type="file" id="picker" accept="image/*" hidden>
