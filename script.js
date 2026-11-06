@@ -1,8 +1,3 @@
-// Clock
-const clock = document.getElementById('clock');
-const tick = () => clock.textContent = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-tick(); setInterval(tick, 30000);
-
 // Typing effect
 const words = ['coding', 'websites', 'clean design', 'learning'];
 const typed = document.getElementById('typed');
@@ -16,37 +11,28 @@ let w = 0, c = 0, del = false;
   setTimeout(type, del ? 50 : 110);
 })();
 
-// ===== Tabs =====
-const labels = {
-  home: 'Home', about: 'About Me', education: 'Educational Attainment',
-  certifications: 'Certifications', family: 'Family'
-};
-const tabsEl = document.getElementById('tabs');
-let openTabs = ['home'];
-let current = 'home';
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
 
-function render() {
-  tabsEl.innerHTML = '';
-  openTabs.forEach(id => {
-    const t = document.createElement('div');
-    t.className = 'tab' + (id === current ? ' active' : '');
-    t.innerHTML = `<span>${labels[id]}</span>` + (id !== 'home' ? '<span class="x">×</span>' : '');
-    t.onclick = e => e.target.classList.contains('x') ? closeTab(id) : activate(id);
-    tabsEl.appendChild(t);
+// ===== Active nav link on scroll =====
+const links = document.querySelectorAll('#menu a');
+const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+    }
   });
-  document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === current));
-  document.querySelectorAll('.menu button').forEach(b => b.classList.toggle('on', b.dataset.open === current));
-}
-function activate(id) { current = id; render(); }
-function openTab(id) { if (!openTabs.includes(id)) openTabs.push(id); activate(id); }
-function closeTab(id) {
-  const i = openTabs.indexOf(id);
-  openTabs = openTabs.filter(t => t !== id);
-  if (current === id) current = openTabs[Math.max(0, i - 1)];
-  render();
-}
-document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openTab(b.dataset.open)));
-render();
+}, { rootMargin: '-45% 0px -50% 0px' });
+sections.forEach(s => spy.observe(s));
+
+// ===== Scroll reveal =====
+const revealEls = document.querySelectorAll('.stat, .info, .card, .about-photo, .title');
+revealEls.forEach(el => el.classList.add('reveal'));
+const rev = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); rev.unobserve(e.target); } });
+}, { threshold: .12 });
+revealEls.forEach(el => rev.observe(el));
 
 // ===== Image slots =====
 // Click an empty slot to pick an image for a quick preview.
@@ -82,26 +68,3 @@ picker.addEventListener('change', () => {
 
 lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
 addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
-
-// ===== Tilting ID card =====
-const card = document.getElementById('card');
-const stage = card.parentElement;
-stage.addEventListener('pointermove', e => {
-  const r = card.getBoundingClientRect();
-  const x = (e.clientX - r.left) / r.width - .5;
-  const y = (e.clientY - r.top) / r.height - .5;
-  card.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg)`;
-});
-stage.addEventListener('pointerleave', () => card.style.transform = '');
-
-// ===== Aurora orbs drift with the mouse + cursor ring =====
-const orbs = document.querySelectorAll('.orb');
-const cursor = document.getElementById('cursor');
-addEventListener('pointermove', e => {
-  const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
-  orbs.forEach((o, i) => o.style.transform = `translate(${x * (i + 1) * 28}px, ${y * (i + 1) * 28}px)`);
-  cursor.style.opacity = 1;
-  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-  cursor.classList.toggle('big', !!e.target.closest('button, a, .tab, .edu, .cert, .member, .slot'));
-});
-document.addEventListener('pointerleave', () => cursor.style.opacity = 0);
