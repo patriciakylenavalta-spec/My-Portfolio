@@ -11,28 +11,21 @@ let w = 0, c = 0, del = false;
   setTimeout(type, del ? 50 : 110);
 })();
 
-// Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// ===== Active nav link on scroll =====
-const links = document.querySelectorAll('#menu a');
-const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
-const spy = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
-    }
-  });
-}, { rootMargin: '-45% 0px -50% 0px' });
-sections.forEach(s => spy.observe(s));
+// ===== Page switching (no scrolling between sections) =====
+const pages = document.querySelectorAll('.page');
+const menuBtns = document.querySelectorAll('.menu button');
+const ids = [...pages].map(p => p.id);
 
-// ===== Scroll reveal =====
-const revealEls = document.querySelectorAll('.stat, .info, .card, .about-photo, .title');
-revealEls.forEach(el => el.classList.add('reveal'));
-const rev = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); rev.unobserve(e.target); } });
-}, { threshold: .12 });
-revealEls.forEach(el => rev.observe(el));
+function show(id) {
+  if (!ids.includes(id)) id = 'home';
+  pages.forEach(p => p.classList.toggle('active', p.id === id));
+  menuBtns.forEach(b => b.classList.toggle('on', b.dataset.open === id));
+  history.replaceState(null, '', '#' + id);
+}
+document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => show(b.dataset.open)));
+show(location.hash.slice(1) || 'home');
 
 // ===== Image slots =====
 // Click an empty slot to pick an image for a quick preview.
