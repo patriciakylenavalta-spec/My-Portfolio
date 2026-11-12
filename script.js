@@ -1,63 +1,82 @@
-// Typing effect
-const words = ['coding', 'websites', 'clean design', 'learning'];
-const typed = document.getElementById('typed');
-let w = 0, c = 0, del = false;
-(function type() {
-  const word = words[w];
-  typed.textContent = word.slice(0, c);
-  if (!del && c === word.length) { del = true; return setTimeout(type, 1400); }
-  if (del && c === 0) { del = false; w = (w + 1) % words.length; }
-  c += del ? -1 : 1;
-  setTimeout(type, del ? 50 : 110);
-})();
 
-document.getElementById('year').textContent = new Date().getFullYear();
+const pageButtons = document.querySelectorAll("[data-page]");
+const pages = document.querySelectorAll(".page");
+const navLinks = document.querySelectorAll(".nav-link");
 
-// ===== Page switching (no scrolling between sections) =====
-const pages = document.querySelectorAll('.page');
-const menuBtns = document.querySelectorAll('.menu button');
-const ids = [...pages].map(p => p.id);
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
 
-function show(id) {
-  if (!ids.includes(id)) id = 'home';
-  pages.forEach(p => p.classList.toggle('active', p.id === id));
-  menuBtns.forEach(b => b.classList.toggle('on', b.dataset.open === id));
-  history.replaceState(null, '', '#' + id);
+// SWITCH BETWEEN HOME AND PERSONAL INFORMATION
+function showPage(pageId) {
+
+    pages.forEach(page => {
+        page.classList.toggle("active", page.id === pageId);
+    });
+
+    navLinks.forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.dataset.page === pageId
+        );
+    });
+
+    menu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
-document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => show(b.dataset.open)));
-show(location.hash.slice(1) || 'home');
 
-// ===== Image slots =====
-// Click an empty slot to pick an image for a quick preview.
-// (For a permanent image, save the file in the images/ folder with the name used in index.html.)
-const picker = document.getElementById('picker');
-const lightbox = document.getElementById('lightbox');
-let targetSlot = null;
+// NAVIGATION BUTTONS
+pageButtons.forEach(button => {
 
-document.addEventListener('click', e => {
-  const slot = e.target.closest('.slot');
-  if (!slot) return;
-  const img = slot.querySelector('img');
-  if (img) {
-    if (slot.classList.contains('zoom')) {
-      lightbox.querySelector('img').src = img.src;
-      lightbox.classList.add('open');
-    }
-    return;
-  }
-  targetSlot = slot;
-  picker.value = '';
-  picker.click();
+    button.addEventListener("click", event => {
+
+        const pageId = button.dataset.page;
+
+        if (pageId) {
+            event.preventDefault();
+            showPage(pageId);
+        }
+
+    });
+
 });
 
-picker.addEventListener('change', () => {
-  const file = picker.files[0];
-  if (!file || !targetSlot) return;
-  const img = document.createElement('img');
-  img.src = URL.createObjectURL(file);
-  img.alt = '';
-  targetSlot.prepend(img);
+// MOBILE MENU
+menuToggle.addEventListener("click", () => {
+
+    const isOpen = menu.classList.toggle("open");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+
 });
 
-lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
-addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+// AUTOMATIC YEAR
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// ANIMATED TEXT
+const words = [
+    "coding",
+    "web design",
+    "learning",
+    "creating"
+];
+
+const typedWord = document.getElementById("typedWord");
+
+let wordIndex = 0;
+
+setInterval(() => {
+
+    wordIndex = (wordIndex + 1) % words.length;
+
+    typedWord.textContent = words[wordIndex];
+
+}, 2200);
