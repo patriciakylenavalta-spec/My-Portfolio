@@ -1,82 +1,25 @@
 
-const pageButtons = document.querySelectorAll("[data-page]");
-const pages = document.querySelectorAll(".page");
-const navLinks = document.querySelectorAll(".nav-link");
+function showPage(pageId, clickedButton) {
 
-const menu = document.getElementById("menu");
-const menuToggle = document.getElementById("menuToggle");
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
 
-// SWITCH BETWEEN HOME AND PERSONAL INFORMATION
-function showPage(pageId) {
-
-    pages.forEach(page => {
-        page.classList.toggle("active", page.id === pageId);
+    pages.forEach(function(page) {
+        page.classList.remove('active');
     });
 
-    navLinks.forEach(link => {
-        link.classList.toggle(
-            "active",
-            link.dataset.page === pageId
-        );
+    // Show selected page
+    document.getElementById(pageId).classList.add('active');
+
+    // Remove active navigation
+    const buttons = document.querySelectorAll('.nav-btn');
+
+    buttons.forEach(function(button) {
+        button.classList.remove('active');
     });
 
-    menu.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    // Highlight clicked navigation
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
 }
-
-// NAVIGATION BUTTONS
-pageButtons.forEach(button => {
-
-    button.addEventListener("click", event => {
-
-        const pageId = button.dataset.page;
-
-        if (pageId) {
-            event.preventDefault();
-            showPage(pageId);
-        }
-
-    });
-
-});
-
-// MOBILE MENU
-menuToggle.addEventListener("click", () => {
-
-    const isOpen = menu.classList.toggle("open");
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
-});
-
-// AUTOMATIC YEAR
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-// ANIMATED TEXT
-const words = [
-    "coding",
-    "web design",
-    "learning",
-    "creating"
-];
-
-const typedWord = document.getElementById("typedWord");
-
-let wordIndex = 0;
-
-setInterval(() => {
-
-    wordIndex = (wordIndex + 1) % words.length;
-
-    typedWord.textContent = words[wordIndex];
-
-}, 2200);
