@@ -1,262 +1,550 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patricia Kyle | My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<header class="navbar">
-    <a href="#" class="logo">&lt;/&gt; Patricia<span>.</span></a>
-
-    <button class="menu-toggle" id="menuToggle">☰</button>
-
-    <nav id="menu">
-        <button class="nav-link active" data-page="home">Home</button>
-        <button class="nav-link" data-page="personal">Personal Information</button>
-    </nav>
-</header>
-
-<main>
-
-    <!-- HOME PAGE -->
-    <section class="page home-page active" id="home">
-
-        <div class="hero-copy">
-
-            <div class="welcome">
-                <span></span> Welcome to my portfolio
-            </div>
-
-            <p class="intro">Hello, everyone! I'm</p>
-
-            <h1>
-                Patricia Kyle
-                <span>Navalta</span>
-            </h1>
-
-            <p class="role">
-                I love <strong id="typedWord">coding</strong>!
-            </p>
-
-            <p class="description">
-                I'm Patricia Kyle S. Navalta, a Website Technology
-                student focused on building clean, fast and thoughtful
-                websites with HTML, CSS and JavaScript. I enjoy turning
-                creative ideas into digital experiences and learning
-                something new with every project.
-            </p>
-
-            <div class="stats">
-
-                <div class="stat-card">
-                    <span>&lt;/&gt;</span>
-                    <h2>3+</h2>
-                    <p>Languages Learned</p>
-                </div>
-
-                <div class="stat-card">
-                    <span>▣</span>
-                    <h2>1</h2>
-                    <p>Major · Web Tech</p>
-                </div>
-
-                <div class="stat-card">
-                    <span>♡</span>
-                    <h2>∞</h2>
-                    <p>Curiosity</p>
-                </div>
-
-            </div>
-
-            <div class="buttons">
-                <button class="primary-btn" data-page="personal">
-                    Personal Info ↗
-                </button>
-
-                <a class="secondary-btn"
-                   href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
-                   target="_blank">
-                    View GitHub ↗
-                </a>
-            </div>
-
-            <div class="social-links">
-
-                <a href="https://www.facebook.com/patriciakyle.nvlta"
-                   target="_blank">f</a>
-
-                <a href="https://www.instagram.com/?hl=en"
-                   target="_blank">◎</a>
-
-                <a href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
-                   target="_blank">⌘</a>
-
-            </div>
-
-        </div>
-
-        <!-- PROFILE PICTURE -->
-        <div class="hero-art">
-
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-
-            <div class="portrait-ring">
-                <div class="portrait-inner">
-                    <img src="images/profile.jpg"
-                         alt="Patricia Kyle S. Navalta">
-                </div>
-            </div>
-
-            <div class="floating-tag tag-top">
-                ✦ Creative Mind
-            </div>
-
-            <div class="floating-tag tag-bottom">
-                &lt;/&gt; Clean Code
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PERSONAL INFORMATION PAGE -->
-    <section class="page personal-page" id="personal">
-
-        <div class="personal-heading">
-            <span class="section-kicker">&lt;about /&gt;</span>
-
-            <h2>Personal <span>Information</span></h2>
-
-            <p>
-                A little more about who I am, what I enjoy,
-                and what I bring to the table.
-            </p>
-        </div>
-
-        <div class="about-block">
-
-            <h3><span>//</span> About Me</h3>
-
-            <p>
-                Hi, I'm <strong>Patricia Kyle S. Navalta</strong>,
-                a Website Technology student who loves turning ideas
-                into clean, working websites. I'll show how a page
-                comes together behind the scenes, from the first
-                line of HTML to the final polish.
-            </p>
-
-            <p>
-                My focus is to create work that not only looks good
-                but leaves a lasting impression. I enjoy coding,
-                perfecting small details, and learning something
-                new with every project.
-            </p>
-
-        </div>
-
-
-        <!-- PROFILE DETAILS -->
-        <div class="profile-panel">
-
-            <div class="panel-heading">
-                <span class="panel-icon">▣</span>
-                <h3>My Profile</h3>
-            </div>
-
-            <div class="profile-grid">
-
-                <div class="profile-item">
-                    <span>FULL NAME</span>
-                    <strong>Patricia Kyle S. Navalta</strong>
-                </div>
-
-                <div class="profile-item">
-                    <span>COURSE</span>
-                    <strong>Website Technology</strong>
-                </div>
-
-                <div class="profile-item">
-                    <span>SCHOOL</span>
-                    <strong>University of the Cordilleras</strong>
-                </div>
-
-                <div class="profile-item">
-                    <span>BIRTHDAY</span>
-                    <strong>July 16, 2008</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- INTERESTS, HOBBIES AND STRENGTHS -->
-        <div class="info-columns">
-
-            <div class="info-card">
-                <div class="info-title">
-                    <span>✧</span>
-                    <h3>Interests</h3>
-                </div>
-
-                <ul>
-                    <li>Web development</li>
-                    <li>Coding and problem solving</li>
-                    <li>Clean design</li>
-                    <li>Technology and gadgets</li>
-                </ul>
-            </div>
-
-
-            <div class="info-card">
-                <div class="info-title">
-                    <span>♡</span>
-                    <h3>Hobbies</h3>
-                </div>
-
-                <ul>
-                    <li>Editing</li>
-                    <li>Playing</li>
-                    <li>Cooking</li>
-                    <li>Cleaning</li>
-                </ul>
-            </div>
-
-
-            <div class="info-card">
-                <div class="info-title">
-                    <span>⚡</span>
-                    <h3>Strengths</h3>
-                </div>
-
-                <ul>
-                    <li>Creativity</li>
-                    <li>Focused</li>
-                    <li>Communication skills</li>
-                    <li>Time management skills</li>
-                </ul>
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-<footer>
-    © <span id="year"></span> Patricia Kyle S. Navalta
-    • Built with HTML, CSS & JavaScript
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patricia | Personal Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #07030e;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+}
+
+:root {
+    --purple: #a020f0;
+    --light: #d05cff;
+    --dark: #090414;
+}
+
+/* BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: #8500ff;
+    filter: blur(180px);
+    opacity: .18;
+    top: -250px;
+    right: -150px;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #6b00ff;
+    filter: blur(180px);
+    opacity: .15;
+    bottom: -250px;
+    left: -150px;
+    z-index: -1;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 72px;
+    margin: 18px 3%;
+    padding: 0 28px;
+    border: 1px solid #a020f0;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px #7900ff55;
+    background: #10091dcc;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: var(--light);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-links button {
+    background: transparent;
+    border: none;
+    color: #ddd;
+    padding: 12px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.nav-links button i {
+    margin-right: 8px;
+    color: var(--light);
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+    background: linear-gradient(90deg,#8500ff,#bb21ff);
+    color: white;
+    box-shadow: 0 0 20px #a020f0;
+}
+
+.nav-links button.active i {
+    color: white;
+}
+
+/* PAGE SECTIONS */
+
+.page {
+    display: none;
+    height: calc(100vh - 108px);
+    padding: 15px 6%;
+    animation: appear .5s ease;
+    overflow: hidden;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HOME */
+
+.home {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.home-text {
+    width: 57%;
+}
+
+.welcome {
+    display: inline-block;
+    padding: 5px 17px;
+    background: #211032;
+    border: 1px solid #6820a0;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.home-text h1 {
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.home-text h1 span {
+    color: var(--light);
+    font-weight: 800;
+    text-shadow: 0 0 20px #9d00ff66;
+}
+
+.home-text h3 {
+    margin: 20px 0 8px;
+    font-weight: 400;
+}
+
+.home-text h3 span {
+    color: var(--light);
+}
+
+.home-text p {
+    color: #c5bfd0;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 520px;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat {
+    width: 125px;
+    height: 95px;
+    background: #140b22;
+    border: 1px solid #58218a;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px #7800ff22;
+}
+
+.stat i {
+    color: var(--light);
+    font-size: 20px;
+}
+
+.stat h2 {
+    font-size: 20px;
+}
+
+.stat small {
+    font-size: 10px;
+    color: #bbb;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 1px solid var(--purple);
+    background: linear-gradient(90deg,#8500ff,#ad20ff);
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    box-shadow: 0 0 18px #8b00ff55;
+}
+
+.btn.outline {
+    background: transparent;
+    box-shadow: none;
+}
+
+.socials {
+    margin-top: 20px;
+    display: flex;
+    gap: 13px;
+}
+
+.socials a {
+    color: white;
+    border: 1px solid #9c48d7;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.socials a:hover {
+    background: var(--purple);
+    box-shadow: 0 0 15px var(--purple);
+}
+
+.home-image {
+    width: 37%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-circle {
+    width: min(340px, 34vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 5px solid #a020f0;
+    box-shadow: 0 0 20px #a020f0,
+                0 0 50px #7b00ff66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle,#35105a,#10051e);
+    overflow: hidden;
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* SECTION TITLE */
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.section-title span {
+    color: var(--light);
+}
+
+/* PERSONAL INFORMATION */
+
+.about-description {
+    color: #c9c0d3;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 850px;
+    margin-bottom: 20px;
+}
+
+.profile-box {
+    border: 1px solid #a020f0;
+    border-radius: 18px;
+    background: #140a21cc;
+    padding: 18px 25px;
+    box-shadow: 0 0 15px #8b00ff33;
+    margin-bottom: 20px;
+}
+
+.profile-box h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 35px;
+}
+
+.profile-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ffffff18;
+}
+
+.profile-item i {
+    color: var(--light);
+    font-size: 20px;
+    width: 25px;
+}
+
+.profile-item strong {
+    color: #b42cff;
+    font-size: 11px;
+    width: 90px;
+}
+
+.profile-item span {
+    font-size: 13px;
+    color: #eee;
+}
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 17px;
+}
+
+.info-card {
+    background: #120a20;
+    border: 1px solid #7025a6;
+    border-radius: 17px;
+    padding: 15px;
+    box-shadow: 0 0 15px #8000ff22;
+}
+
+.info-card h3 {
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #a020f0;
+}
+
+.info-card h3 i {
+    color: var(--light);
+    margin-right: 12px;
+}
+
+.info-card p {
+    background: #21152e;
+    border-radius: 25px;
+    padding: 9px 12px;
+    font-size: 11px;
+    margin: 8px 0;
+}
+
+.info-card p i {
+    color: var(--light);
+    margin-right: 12px;
+}
+
+/* OTHER PAGES */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.content-card {
+    background: #150a24;
+    border: 1px solid #8626c2;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 0 18px #8500ff22;
+}
+
+.content-card i {
+    font-size: 30px;
+    color: var(--light);
+    margin-bottom: 15px;
+}
+
+.content-card h2 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.content-card p {
+    color: #c7bdd2;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+    .navbar {
+        padding: 0 12px;
+        margin: 10px 2%;
+        height: 65px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-links button {
+        padding: 10px 8px;
+        font-size: 10px;
+    }
+
+    .nav-links button i {
+        margin-right: 3px;
+    }
+
+    .page {
+        padding: 12px 4%;
+    }
+
+    .home-text h1 {
+        font-size: 32px;
+    }
+
+    .profile-circle {
+        width: 260px;
+    }
+}
+
+@media(max-width: 600px) {
+    .navbar {
+        height: auto;
+        min-height: 65px;
+        flex-direction: column;
+        padding: 8px;
+        border-radius: 18px;
+        gap: 7px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-links button {
+        font-size: 9px;
+        padding: 7px;
+    }
+
+    .page {
+        height: calc(100vh - 105px);
+        padding: 10px 3%;
+    }
+
+    .home {
+        flex-direction: column-reverse !important;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .home-text {
+        width: 100%;
+    }
+
+    .home-image {
+        width: 100%;
+    }
+
+    .profile-circle {
+        width: min(165px, 32vh);
+    }
+
+    .home-text h1 {
+        font-size: 25px;
+    }
+
+    .home-text p {
+        font-size: 11px;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .stat {
+        width: 95px;
+        height: 75px;
+    }
+
+    .buttons, .socials {
+        justify-content: center;
+    }
+
+    .profile-grid {
+        gap: 5px;
+        grid-template-columns: 1fr;
+    }
+
+    .info-cards {
+        grid-template-columns: repeat(3,min
+```
