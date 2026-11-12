@@ -2,409 +2,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patricia | My Portfolio</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #080311;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    overflow: hidden;
-}
-
-:root {
-    --purple: #a020f0;
-    --light: #d66aff;
-    --glow: 0 0 15px #a020f0, 0 0 30px #7800ff;
-}
-
-header {
-    width: 94%;
-    margin: 18px auto;
-    padding: 15px 30px;
-    border: 1px solid var(--purple);
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: var(--glow);
-}
-
-.logo {
-    font-family: Orbitron;
-    font-size: 25px;
-    color: var(--light);
-}
-
-nav {
-    display: flex;
-    gap: 12px;
-}
-
-nav button {
-    background: transparent;
-    color: white;
-    border: none;
-    padding: 12px 17px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: .3s;
-}
-
-nav button:hover,
-nav button.active {
-    background: linear-gradient(90deg,#7800ff,#c000ff);
-    box-shadow: var(--glow);
-}
-
-main {
-    width: 94%;
-    height: calc(100vh - 110px);
-    margin: auto;
-    position: relative;
-}
-
-.page {
-    display: none;
-    height: 100%;
-    padding: 35px 25px;
-    animation: fade .5s ease;
-}
-
-.page.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-@keyframes fade {
-    from {opacity: 0; transform: translateY(15px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-h1 {
-    font-size: clamp(30px, 4vw, 55px);
-    font-family: Orbitron;
-}
-
-h1 span, h2 span {
-    color: var(--light);
-    text-shadow: var(--glow);
-}
-
-p {
-    color: #c8bfd7;
-    line-height: 1.8;
-}
-
-.hero {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    align-items: center;
-    gap: 40px;
-}
-
-.hero p {
-    margin: 15px 0;
-}
-
-.profile {
-    width: 280px;
-    height: 280px;
-    margin: auto;
-    border: 4px solid var(--purple);
-    border-radius: 50%;
-    box-shadow: var(--glow);
-    display: grid;
-    place-items: center;
-    font-size: 100px;
-    background: radial-gradient(circle,#38105d,#10051d);
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    margin: 12px 8px 0 0;
-    background: linear-gradient(90deg,#7800ff,#bd21ff);
-    color: white;
-    border: 1px solid var(--light);
-    border-radius: 30px;
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow: var(--glow);
-    font-family: inherit;
-}
-
-.btn.outline {
-    background: transparent;
-    box-shadow: none;
-}
-
-.stats {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.stat {
-    padding: 15px;
-    width: 120px;
-    border: 1px solid #61209b;
-    border-radius: 15px;
-    text-align: center;
-    background: #160b25;
-}
-
-.stat strong {
-    display: block;
-    font-size: 22px;
-    color: var(--light);
-}
-
-.panel {
-    padding: 25px;
-    background: linear-gradient(135deg,#170b28,#0c0616);
-    border: 1px solid var(--purple);
-    border-radius: 20px;
-    box-shadow: 0 0 15px #4b087a;
-}
-
-.panel h2 {
-    margin-bottom: 20px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.item {
-    background: #1b102b;
-    padding: 13px;
-    margin: 9px 0;
-    border-radius: 12px;
-    border: 1px solid #38204f;
-    color: #e9dafa;
-}
-
-.item:hover {
-    border-color: var(--light);
-    box-shadow: 0 0 12px #8500ff;
-}
-
-.social {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social a {
-    color: var(--light);
-    text-decoration: none;
-    border: 1px solid var(--purple);
-    border-radius: 50%;
-    padding: 10px;
-}
-
-@media(max-width:700px) {
-    body {
-        overflow: auto;
-        height: 100dvh;
-    }
-
-    header {
-        flex-direction: column;
-        gap: 12px;
-        padding: 12px;
-    }
-
-    nav {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    nav button {
-        white-space: nowrap;
-        font-size: 10px;
-        padding: 10px;
-    }
-
-    main {
-        height: auto;
-    }
-
-    .page {
-        min-height: 75vh;
-        padding: 20px 5px;
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .profile {
-        width: 190px;
-        height: 190px;
-    }
-
-    .stats {
-        justify-content: center;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricia Kyle | My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header>
-    <div class="logo">&lt;/&gt; Patricia.</div>
-    <nav>
-        <button class="active" onclick="showPage('home',this)">⌂ HOME</button>
-        <button onclick="showPage('about',this)">♙ PERSONAL INFO</button>
-        <button onclick="showPage('education',this)">🎓 EDUCATION</button>
-        <button onclick="showPage('certifications',this)">🏆 CERTIFICATIONS</button>
-        <button onclick="showPage('family',this)">♧ FAMILY</button>
+<header class="navbar">
+    <a href="#" class="logo">&lt;/&gt; Patricia<span>.</span></a>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <nav id="menu">
+        <button class="nav-link active" data-page="home">Home</button>
+        <button class="nav-link" data-page="personal">Personal Information</button>
     </nav>
 </header>
 
 <main>
 
-<section class="page active hero" id="home">
-    <div>
-        <p>✦ WELCOME TO MY PORTFOLIO</p>
-        <h1>Hello Everyone! I'm<br>
-        <span>Patricia Kyle Navalta</span></h1>
+    <!-- HOME PAGE -->
+    <section class="page home-page active" id="home">
 
-        <h3 style="margin-top:20px">I love <span>coding!</span></h3>
+        <div class="hero-copy">
 
-        <p>I'm Patricia Kyle S. Navalta, a Website Technology student focused on creating beautiful, clean and modern websites using HTML, CSS and JavaScript.</p>
+            <div class="welcome">
+                <span></span> Welcome to my portfolio
+            </div>
 
-        <div class="stats">
-            <div class="stat"><strong>3+</strong>Languages</div>
-            <div class="stat"><strong>1</strong>Major</div>
-            <div class="stat"><strong>∞</strong>Curiosity</div>
+            <p class="intro">Hello, everyone! I'm</p>
+
+            <h1>
+                Patricia Kyle
+                <span>Navalta</span>
+            </h1>
+
+            <p class="role">
+                I love <strong id="typedWord">coding</strong>!
+            </p>
+
+            <p class="description">
+                I'm Patricia Kyle S. Navalta, a Website Technology
+                student focused on building clean, fast and thoughtful
+                websites with HTML, CSS and JavaScript. I enjoy turning
+                creative ideas into digital experiences and learning
+                something new with every project.
+            </p>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span>&lt;/&gt;</span>
+                    <h2>3+</h2>
+                    <p>Languages Learned</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>▣</span>
+                    <h2>1</h2>
+                    <p>Major · Web Tech</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>♡</span>
+                    <h2>∞</h2>
+                    <p>Curiosity</p>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+                <button class="primary-btn" data-page="personal">
+                    Personal Info ↗
+                </button>
+
+                <a class="secondary-btn"
+                   href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
+                   target="_blank">
+                    View GitHub ↗
+                </a>
+            </div>
+
+            <div class="social-links">
+
+                <a href="https://www.facebook.com/patriciakyle.nvlta"
+                   target="_blank">f</a>
+
+                <a href="https://www.instagram.com/?hl=en"
+                   target="_blank">◎</a>
+
+                <a href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
+                   target="_blank">⌘</a>
+
+            </div>
+
         </div>
 
-        <a class="btn" onclick="showPage('about',document.querySelectorAll('nav button')[1])">Personal Info →</a>
+        <!-- PROFILE PICTURE -->
+        <div class="hero-art">
 
-        <a class="btn outline" href="https://github.com/" target="_blank">GitHub ↗</a>
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
 
-        <div class="social">
-            <a href="https://github.com/" target="_blank">GH</a>
-            <a href="#">IG</a>
-            <a href="#">FB</a>
+            <div class="portrait-ring">
+                <div class="portrait-inner">
+                    <img src="images/profile.jpg"
+                         alt="Patricia Kyle S. Navalta">
+                </div>
+            </div>
+
+            <div class="floating-tag tag-top">
+                ✦ Creative Mind
+            </div>
+
+            <div class="floating-tag tag-bottom">
+                &lt;/&gt; Clean Code
+            </div>
+
         </div>
-    </div>
 
-    <div class="profile">👩🏻‍💻</div>
-</section>
+    </section>
 
-<section class="page" id="about">
-    <div class="panel">
-        <h2>♙ About <span>Me</span></h2>
-        <p>Hi! I'm Patricia Kyle S. Navalta, a Website Technology student who loves turning ideas into clean, creative websites.</p>
-        <div class="grid">
-            <div class="item">♙ FULL NAME<br><br>Patricia Kyle S. Navalta</div>
-            <div class="item">🎓 COURSE<br><br>Website Technology</div>
-            <div class="item">🏫 SCHOOL<br><br>University of the Cordilleras</div>
-            <div class="item">🎂 BIRTHDAY<br><br>July 16, 2008</div>
-        </div>
-    </div>
 
-    <div class="grid">
-        <div class="panel">
-            <h2>☆ Interests</h2>
-            <div class="item">Web Development</div>
-            <div class="item">Coding and Problem Solving</div>
-            <div class="item">Clean Design</div>
-            <div class="item">Technology and Gadgets</div>
-        </div>
-        <div class="panel">
-            <h2>♡ Hobbies</h2>
-            <div class="item">Editing</div>
-            <div class="item">Playing</div>
-            <div class="item">Cooking</div>
-            <div class="item">Cleaning</div>
-        </div>
-        <div class="panel">
-            <h2>⚡ Strengths</h2>
-            <div class="item">Creativity</div>
-            <div class="item">Focused</div>
-            <div class="item">Communication Skills</div>
-            <div class="item">Time Management</div>
-        </div>
-    </div>
-</section>
+    <!-- PERSONAL INFORMATION PAGE -->
+    <section class="page personal-page" id="personal">
 
-<section class="page" id="education">
-    <div class="panel">
-        <h2>🎓 My <span>Education</span></h2>
-        <div class="item">📚 College / University<br><br>University of the Cordilleras<br>Website Technology</div>
-        <div class="item">🏫 Senior High School<br><br>Add your school name here</div>
-        <div class="item">📖 Junior High School<br><br>Add your school name here</div>
-    </div>
-</section>
+        <div class="personal-heading">
+            <span class="section-kicker">&lt;about /&gt;</span>
 
-<section class="page" id="certifications">
-    <div class="panel">
-        <h2>🏆 My <span>Certifications</span></h2>
-        <p>My achievements, certificates and learning experiences.</p>
-        <div class="grid">
-            <div class="item">💻 HTML Certificate<br><br>Add certificate here</div>
-            <div class="item">🎨 CSS Certificate<br><br>Add certificate here</div>
-            <div class="item">⚡ JavaScript Certificate<br><br>Add certificate here</div>
-        </div>
-    </div>
-</section>
+            <h2>Personal <span>Information</span></h2>
 
-<section class="page" id="family">
-    <div class="panel">
-        <h2>♡ My <span>Family</span></h2>
-        <p>My family is my inspiration, motivation and biggest support in everything I do.</p>
-        <div class="grid">
-            <div class="item">👨 Father<br><br>Add information</div>
-            <div class="item">👩 Mother<br><br>Add information</div>
-            <div class="item">👧 Siblings<br><br>Add information</div>
+            <p>
+                A little more about who I am, what I enjoy,
+                and what I bring to the table.
+            </p>
         </div>
-    </div>
-</section>
+
+        <div class="about-block">
+
+            <h3><span>//</span> About Me</h3>
+
+            <p>
+                Hi, I'm <strong>Patricia Kyle S. Navalta</strong>,
+                a Website Technology student who loves turning ideas
+                into clean, working websites. I'll show how a page
+                comes together behind the scenes, from the first
+                line of HTML to the final polish.
+            </p>
+
+            <p>
+                My focus is to create work that not only looks good
+                but leaves a lasting impression. I enjoy coding,
+                perfecting small details, and learning something
+                new with every project.
+            </p>
+
+        </div>
+
+
+        <!-- PROFILE DETAILS -->
+        <div class="profile-panel">
+
+            <div class="panel-heading">
+                <span class="panel-icon">▣</span>
+                <h3>My Profile</h3>
+            </div>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+                    <span>FULL NAME</span>
+                    <strong>Patricia Kyle S. Navalta</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>COURSE</span>
+                    <strong>Website Technology</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>SCHOOL</span>
+                    <strong>University of the Cordilleras</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>BIRTHDAY</span>
+                    <strong>July 16, 2008</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTERESTS, HOBBIES AND STRENGTHS -->
+        <div class="info-columns">
+
+            <div class="info-card">
+                <div class="info-title">
+                    <span>✧</span>
+                    <h3>Interests</h3>
+                </div>
+
+                <ul>
+                    <li>Web development</li>
+                    <li>Coding and problem solving</li>
+                    <li>Clean design</li>
+                    <li>Technology and gadgets</li>
+                </ul>
+            </div>
+
+
+            <div class="info-card">
+                <div class="info-title">
+                    <span>♡</span>
+                    <h3>Hobbies</h3>
+                </div>
+
+                <ul>
+                    <li>Editing</li>
+                    <li>Playing</li>
+                    <li>Cooking</li>
+                    <li>Cleaning</li>
+                </ul>
+            </div>
+
+
+            <div class="info-card">
+                <div class="info-title">
+                    <span>⚡</span>
+                    <h3>Strengths</h3>
+                </div>
+
+                <ul>
+                    <li>Creativity</li>
+                    <li>Focused</li>
+                    <li>Communication skills</li>
+                    <li>Time management skills</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
-<script>
-function showPage(page, button) {
-    document.querySelectorAll('.page').forEach(section => {
-        section.classList.remove('active');
-    });
+<footer>
+    © <span id="year"></span> Patricia Kyle S. Navalta
+    • Built with HTML, CSS & JavaScript
+</footer>
 
-    document.getElementById(page).classList.add('active');
-
-    document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    button.classList.add('active');
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
