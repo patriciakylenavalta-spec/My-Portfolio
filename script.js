@@ -1,95 +1,82 @@
 
+const pageButtons = document.querySelectorAll("[data-page]");
+const pages = document.querySelectorAll(".page");
+const navLinks = document.querySelectorAll(".nav-link");
 
-document.addEventListener("DOMContentLoaded", function () {
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
 
-    const pages = document.querySelectorAll(".page");
-    const navLinks = document.querySelectorAll("[data-page]");
-    const menu = document.getElementById("menu");
-    const menuToggle = document.getElementById("menuToggle");
+// SWITCH BETWEEN HOME AND PERSONAL INFORMATION
+function showPage(pageId) {
 
-    function showPage(pageId) {
-
-        const targetPage = document.getElementById(pageId);
-
-        if (!targetPage) return;
-
-        pages.forEach(page => {
-            page.classList.remove("active");
-        });
-
-        targetPage.classList.add("active");
-
-        navLinks.forEach(link => {
-            link.classList.toggle(
-                "active",
-                link.dataset.page === pageId
-            );
-        });
-
-        if (menu) {
-            menu.classList.remove("open");
-        }
-
-        if (menuToggle) {
-            menuToggle.setAttribute("aria-expanded", "false");
-        }
-
-        window.scrollTo(0, 0);
-    }
-
-    navLinks.forEach(button => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            showPage(this.dataset.page);
-        });
+    pages.forEach(page => {
+        page.classList.toggle("active", page.id === pageId);
     });
 
-    if (menuToggle && menu) {
-        menuToggle.addEventListener("click", function () {
-            menu.classList.toggle("open");
-        });
-    }
+    navLinks.forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.dataset.page === pageId
+        );
+    });
 
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
+    menu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
 
-    const words = [
-        "coding",
-        "web design",
-        "learning",
-        "creating"
-    ];
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
-    const typedWord = document.getElementById("typedWord");
-    let index = 0;
+// NAVIGATION BUTTONS
+pageButtons.forEach(button => {
 
-    setInterval(() => {
-        index = (index + 1) % words.length;
-        typedWord.textContent = words[index];
-    }, 2200);
+    button.addEventListener("click", event => {
+
+        const pageId = button.dataset.page;
+
+        if (pageId) {
+            event.preventDefault();
+            showPage(pageId);
+        }
+
+    });
 
 });
-function showPage(pageId, clickedButton) {
 
-    // Hide all pages
-    const pages = document.querySelectorAll('.page');
+// MOBILE MENU
+menuToggle.addEventListener("click", () => {
 
-    pages.forEach(function(page) {
-        page.classList.remove('active');
-    });
+    const isOpen = menu.classList.toggle("open");
 
-    // Show selected page
-    document.getElementById(pageId).classList.add('active');
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
 
-    // Remove active navigation
-    const buttons = document.querySelectorAll('.nav-btn');
+});
 
-    buttons.forEach(function(button) {
-        button.classList.remove('active');
-    });
+// AUTOMATIC YEAR
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-    // Highlight clicked navigation
-    if (clickedButton) {
-        clickedButton.classList.add('active');
-    }
-}
+// ANIMATED TEXT
+const words = [
+    "coding",
+    "web design",
+    "learning",
+    "creating"
+];
+
+const typedWord = document.getElementById("typedWord");
+
+let wordIndex = 0;
+
+setInterval(() => {
+
+    wordIndex = (wordIndex + 1) % words.length;
+
+    typedWord.textContent = words[wordIndex];
+
+}, 2200);
