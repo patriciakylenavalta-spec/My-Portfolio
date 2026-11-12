@@ -1,408 +1,472 @@
 
-/* ==========================
-   ACHIEVEMENTS PAGE
-========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.achievements-page {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 13px;
-    padding: 12px 0;
-    min-height: 0;
-    height: calc(100vh - 145px);
+:root {
+    --purple: #a020f0;
+    --light: #d05cff;
+    --dark: #080312;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark);
+    color: white;
+    height: 100vh;
     overflow: hidden;
 }
 
-.achievements-page.active {
-    display: flex;
+/* BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #8000ff;
+    filter: blur(180px);
+    opacity: .2;
+    top: -200px;
+    right: -100px;
+    z-index: -1;
 }
 
-.achievement-header {
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #a000ff;
+    filter: blur(180px);
+    opacity: .15;
+    bottom: -250px;
+    left: -100px;
+    z-index: -1;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    height: 65px;
+    margin: 18px 3%;
+    padding: 0 25px;
+    border: 1px solid var(--purple);
+    border-radius: 50px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 5px 12px;
+    justify-content: space-between;
+    background: #10091ddd;
+    box-shadow: 0 0 15px #8a00ff55;
 }
 
-.achievement-label {
-    color: #c16aff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
+.logo {
+    color: var(--light);
+    font-size: 25px;
+    font-weight: 800;
 }
 
-.achievement-header h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(27px, 3vw, 40px);
-    margin: 5px 0;
+nav {
+    display: flex;
+    gap: 8px;
 }
 
-.achievement-header h1 span {
-    color: #bd54ff;
-    text-shadow: 0 0 15px #9d24f2;
-}
-
-.achievement-header p {
-    color: #b9adc9;
-    font-size: 13px;
-}
-
-.achievement-badge {
-    font-size: 55px;
-    filter: drop-shadow(0 0 15px #a52cff);
-    padding-right: 25px;
-}
-
-/* SECTION */
-
-.achievement-section {
+.nav-btn {
     padding: 12px 15px;
-    border: 1px solid rgba(177, 77, 255, 0.45);
-    border-radius: 17px;
-    background: linear-gradient(
-        110deg,
-        rgba(38, 17, 59, 0.75),
-        rgba(12, 7, 20, 0.9)
-    );
-    box-shadow: 0 0 18px rgba(139, 35, 220, 0.1);
-}
-
-.achievement-section h2 {
-    font-size: 16px;
-    margin-bottom: 11px;
-}
-
-.achievement-section h2 span {
-    color: #c15cff;
-    margin-right: 7px;
-}
-
-/* EDUCATION CARDS */
-
-.school-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-.school-card {
-    min-width: 0;
-    text-align: center;
-    padding: 12px 8px;
-    border: 1px solid rgba(182, 89, 255, 0.4);
-    border-radius: 14px;
-    background: rgba(13, 8, 23, 0.9);
-    transition: 0.3s;
-}
-
-.school-card:hover {
-    transform: translateY(-4px);
-    border-color: #c15cff;
-    box-shadow: 0 0 18px rgba(165, 44, 255, 0.35);
-}
-
-.school-logo-placeholder {
-    width: 52px;
-    height: 52px;
-    margin: 0 auto 7px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    border: 2px solid #bd54ff;
-    background: linear-gradient(135deg, #39115a, #13091e);
-    color: #e2baff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 0 12px rgba(177, 77, 255, 0.4);
-}
-
-.school-card h3 {
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-
-.school-card p {
-    color: #b9adc9;
-    font-size: 11px;
-    min-height: 28px;
-    line-height: 1.4;
-}
-
-.school-year {
-    display: inline-block;
-    margin-top: 7px;
-    padding: 5px 13px;
-    border-radius: 20px;
+    border: none;
+    border-radius: 30px;
+    background: transparent;
     color: white;
-    background: linear-gradient(100deg, #7615c4, #bd43ff);
-    font-size: 10px;
-    font-weight: bold;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .3s;
 }
 
-.featured-school {
-    border-color: #d18aff;
-    background: linear-gradient(
-        145deg,
-        rgba(91, 25, 137, 0.45),
-        rgba(13, 8, 23, 0.95)
-    );
+.nav-btn i {
+    color: var(--light);
+    margin-right: 5px;
 }
 
-/* MEMORIES GALLERY */
-
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+.nav-btn:hover,
+.nav-btn.active {
+    background: linear-gradient(90deg,#8500ff,#bd20ff);
+    box-shadow: 0 0 20px #a020f0;
 }
 
-.memory-card {
-    min-width: 0;
-    padding: 7px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(177, 77, 255, 0.25);
+/* PAGE */
+
+main {
+    height: calc(100vh - 105px);
 }
 
-.memory-placeholder {
-    height: 78px;
+.page {
+    display: none;
+    height: 100%;
+    padding: 25px 6%;
+    overflow: hidden;
+    animation: fade .4s ease;
+}
+
+.page.active {
     display: flex;
     flex-direction: column;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HOME */
+
+#home {
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 3px;
-    border: 1px dashed #a94bdf;
-    border-radius: 9px;
-    background: linear-gradient(
-        135deg,
-        rgba(89, 26, 130, 0.3),
-        rgba(13, 8, 23, 0.8)
-    );
-    color: #c78aff;
+    justify-content: space-between;
+    gap: 35px;
 }
 
-.memory-placeholder span {
-    font-size: 25px;
+.home-content {
+    width: 55%;
 }
 
-.memory-placeholder p {
-    font-size: 10px;
+.welcome {
+    display: inline-block;
+    background: #25103b;
+    border: 1px solid var(--purple);
+    padding: 5px 18px;
+    border-radius: 30px;
+    margin-bottom: 15px;
 }
 
-.memory-card h4 {
-    text-align: center;
-    font-size: 11px;
-    margin-top: 7px;
+.home-content h1 {
+    font-size: clamp(25px,3vw,43px);
+    font-weight: 400;
 }
 
-/* AWARDS */
-
-.awards-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+.home-content h2 {
+    color: var(--light);
+    font-size: clamp(30px,3.5vw,48px);
+    font-weight: 800;
+    text-shadow: 0 0 15px #a020f055;
 }
 
-.award-card {
+.home-content h3 {
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.home-content h3 span {
+    color: var(--light);
+}
+
+.home-content p {
+    color: #c5bfd1;
+    line-height: 1.8;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.stats {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px;
-    min-width: 0;
-    border: 1px solid rgba(177, 77, 255, 0.3);
-    border-radius: 12px;
-    background: rgba(16, 9, 27, 0.9);
+    gap: 15px;
+    margin: 20px 0;
 }
 
-.award-icon {
-    font-size: 25px;
-    filter: drop-shadow(0 0 7px #a52cff);
+.stat {
+    flex: 1;
+    text-align: center;
+    padding: 15px 8px;
+    background: #130b22;
+    border: 1px solid #63209b;
+    border-radius: 18px;
 }
 
-.award-card h3 {
-    font-size: 11px;
+.stat i {
+    color: var(--light);
+    font-size: 20px;
 }
 
-.award-card p {
-    color: #b9adc9;
+.stat h2 {
+    font-size: 23px;
+    color: white;
+}
+
+.stat small {
     font-size: 10px;
-    margin-top: 4px;
+    color: #c5bfd1;
+}
+
+.main-btn {
+    background: linear-gradient(90deg,#8500ff,#bc20ff);
+    color: white;
+    border: none;
+    padding: 13px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 0 20px #9000ff77;
+}
+
+.home-image {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-circle {
+    width: min(320px, 30vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 9px;
+    border: 4px solid var(--purple);
+    box-shadow: 0 0 30px var(--purple);
+}
+
+.image-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* HEADINGS */
+
+.section-heading {
+    margin-bottom: 22px;
+}
+
+.section-heading h1 {
+    font-size: 32px;
+}
+
+.section-heading h1 i,
+.section-heading span {
+    color: var(--light);
+}
+
+.section-heading p {
+    color: #c5bfd1;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* PERSONAL INFORMATION */
+
+.profile-box {
+    background: #120a20;
+    border: 1px solid var(--light);
+    border-radius: 18px;
+    padding: 20px 25px;
+    box-shadow: 0 0 15px #8c00ff33;
+}
+
+.profile-box h2 {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--purple);
+    margin-bottom: 15px;
+}
+
+.profile-box h2 i {
+    color: var(--light);
+    margin-right: 10px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.profile-grid p {
+    color: #eee;
+    font-size: 13px;
+}
+
+.profile-grid b {
+    color: var(--light);
+    display: inline-block;
+    min-width: 105px;
+}
+
+.three-boxes {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.info-box {
+    background: #110a20;
+    border: 1px solid #8125c4;
+    padding: 18px;
+    border-radius: 18px;
+}
+
+.info-box h2 {
+    font-size: 18px;
+    color: var(--light);
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    background: #21152e;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 9px;
+    font-size: 12px;
+}
+
+/* ACHIEVEMENT */
+
+.education-box {
+    background: #150c25;
+    border: 1px solid var(--purple);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 18px;
+    transition: .3s;
+}
+
+.education-box:hover,
+.certificate:hover,
+.family-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #a020f055;
+}
+
+.education-box i {
+    color: var(--light);
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.education-box h2 {
+    font-size: 18px;
+}
+
+.education-box h3,
+.education-box p {
+    font-size: 13px;
+    color: #c5bfd1;
+}
+
+/* CERTIFICATIONS */
+
+.certificate-grid,
+.family-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.certificate,
+.family-card {
+    background: #150c25;
+    border: 1px solid var(--purple);
+    border-radius: 18px;
+    padding: 35px 20px;
+    text-align: center;
+    transition: .3s;
+}
+
+.certificate i,
+.family-card i {
+    font-size: 40px;
+    color: var(--light);
+    margin-bottom: 15px;
+}
+
+.certificate h2,
+.family-card h2 {
+    font-size: 17px;
+}
+
+.certificate p,
+.family-card p {
+    color: #c5bfd1;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 /* RESPONSIVE */
 
-@media (max-width: 760px) {
-
-    .achievements-page,
-    .achievements-page.active {
+@media (max-width: 850px) {
+    .navbar {
+        padding: 8px 12px;
         height: auto;
-        min-height: 0;
-        overflow: visible;
-        padding: 25px 0;
+        flex-direction: column;
+        gap: 8px;
     }
 
-    .achievement-header {
-        padding: 10px 0;
+    .logo {
+        font-size: 20px;
     }
 
-    .school-grid,
-    .memory-grid,
-    .awards-grid {
-        grid-template-columns: repeat(2, 1fr);
+    nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
-    .achievement-badge {
-        font-size: 35px;
-        padding: 0;
+    .nav-btn {
+        font-size: 9px;
+        padding: 8px;
+    }
+
+    .page {
+        padding: 15px 4%;
+    }
+
+    .home-content {
+        width: 60%;
+    }
+
+    .three-boxes {
+        gap: 8px;
+    }
+
+    .info-box {
+        padding: 10px;
+    }
+
+    .info-box p {
+        font-size: 10px;
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 600px) {
+    .home-image {
+        display: none;
+    }
 
-    .school-grid,
-    .memory-grid,
-    .awards-grid {
+    .home-content {
+        width: 100%;
+    }
+
+    .profile-grid {
         grid-template-columns: 1fr;
     }
 
-    .achievement-header p {
-        max-width: 260px;
-        line-height: 1.5;
-    }
-}
-
-/* PERSONAL INFORMATION - ONE SCREEN ONLY */
-
-@media (min-width: 761px) {
-
-    body {
-        overflow: hidden;
+    .three-boxes {
+        grid-template-columns: 1fr;
     }
 
-    main {
-        height: calc(100vh - 145px);
-        min-height: 0;
+    .certificate-grid,
+    .family-grid {
+        grid-template-columns: 1fr;
     }
 
-    .personal-page,
-    .personal-page.active {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-
-        height: 100%;
-        min-height: 0;
-        padding: 10px 0;
-
-        overflow: hidden;
-    }
-
-    /* Heading */
-    .personal-heading {
-        margin-bottom: 0;
-    }
-
-    .personal-heading h2 {
-        font-size: 27px;
-        margin: 5px 0;
-    }
-
-    .personal-heading p {
-        font-size: 12px;
-    }
-
-    /* About Me */
-    .about-block {
-        width: 100%;
-        margin: 0;
-    }
-
-    .about-block h3 {
-        font-size: 15px;
-        margin-bottom: 5px;
-    }
-
-    .about-block p {
-        font-size: 12px;
-        line-height: 1.5;
-        margin: 5px 0;
-    }
-
-    /* Profile */
-    .profile-panel {
-        padding: 12px 20px;
-        margin: 0;
-    }
-
-    .panel-heading {
-        padding-bottom: 8px;
-    }
-
-    .panel-heading h3 {
-        font-size: 14px;
-    }
-
-    .profile-item {
-        padding: 10px 0;
-    }
-
-    .profile-item strong {
-        font-size: 12px;
-    }
-
-    .profile-item span {
-        font-size: 9px;
-    }
-
-    /* Interests, Hobbies, Strengths */
-    .info-columns {
-        gap: 12px;
-    }
-
-    .info-card {
-        padding: 12px;
-    }
-
-    .info-title {
-        padding-bottom: 7px;
-        margin-bottom: 8px;
-    }
-
-    .info-title h3 {
-        font-size: 13px;
-    }
-
-    .info-title span {
-        font-size: 17px;
-    }
-
-    .info-card ul {
-        gap: 6px;
-    }
-
-    .info-card li {
-        padding: 8px 10px;
-        font-size: 11px;
-    }
-}
-
-/* MOBILE: allow normal scrolling on smaller screens */
-
-@media (max-width: 760px) {
-
-    body {
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    .personal-page,
-    .personal-page.active {
-        height: auto;
-        min-height: 0;
-        overflow: visible;
-        padding: 25px 0;
+    .section-heading h1 {
+        font-size: 23px;
     }
 }
