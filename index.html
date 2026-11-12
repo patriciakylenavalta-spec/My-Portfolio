@@ -1,413 +1,191 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patricia Kyle | My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patricia | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-<header class="navbar">
-    <a href="#" class="logo">&lt;/&gt; Patricia<span>.</span></a>
+  <!-- NAVBAR (built by script.js) -->
+  <nav id="navbar"></nav>
 
-    <button class="menu-toggle" id="menuToggle">☰</button>
+  <main>
 
-    <nav id="menu">
-        <button class="nav-link active" data-page="home">Home</button>
-        <button class="nav-link" data-page="personal">Personal Information</button>
-    </nav>
-</header>
+    <!-- ================= HOME ================= -->
+    <section class="page home" id="home">
+      <div class="left">
+        <span class="welcome-tag card">Welcome</span>
+        <div class="greeting">Hello Everyone I’m</div>
+        <div class="fullname">Patricia Kyle Navalta</div>
 
-<main>
+        <p class="intro">
+          <span class="love">I love <span class="highlight" id="typed">coding</span><span class="cursor">|</span></span>
+          I'm Patricia Kyle S. Navalta, a Website Technology student focused on building
+          clean, fast and thoughtful websites with HTML, CSS and JavaScript.
+        </p>
 
-    <!-- HOME PAGE -->
-    <section class="page home-page active" id="home">
-
-        <div class="hero-copy">
-
-            <div class="welcome">
-                <span></span> Welcome to my portfolio
-            </div>
-
-            <p class="intro">Hello, everyone! I'm</p>
-
-            <h1>
-                Patricia Kyle
-                <span>Navalta</span>
-            </h1>
-
-            <p class="role">
-                I love <strong id="typedWord">coding</strong>!
-            </p>
-
-            <p class="description">
-                I'm Patricia Kyle S. Navalta, a Website Technology
-                student focused on building clean, fast and thoughtful
-                websites with HTML, CSS and JavaScript. I enjoy turning
-                creative ideas into digital experiences and learning
-                something new with every project.
-            </p>
-
-            <div class="stats">
-
-                <div class="stat-card">
-                    <span>&lt;/&gt;</span>
-                    <h2>3+</h2>
-                    <p>Languages Learned</p>
-                </div>
-
-                <div class="stat-card">
-                    <span>▣</span>
-                    <h2>1</h2>
-                    <p>Major · Web Tech</p>
-                </div>
-
-                <div class="stat-card">
-                    <span>♡</span>
-                    <h2>∞</h2>
-                    <p>Curiosity</p>
-                </div>
-
-            </div>
-
-            <div class="buttons">
-                <button class="primary-btn" data-page="personal">
-                    Personal Info ↗
-                </button>
-
-                <a class="secondary-btn"
-                   href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
-                   target="_blank">
-                    View GitHub ↗
-                </a>
-            </div>
-
-            <div class="social-links">
-
-                <a href="https://www.facebook.com/patriciakyle.nvlta"
-                   target="_blank">f</a>
-
-                <a href="https://www.instagram.com/?hl=en"
-                   target="_blank">◎</a>
-
-                <a href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
-                   target="_blank">⌘</a>
-
-            </div>
-
+        <div class="stats">
+          <div class="card stat" data-icon="code"><b>3+</b>Languages Learned</div>
+          <div class="card stat" data-icon="laptop"><b>1</b>Major: Web Tech</div>
+          <div class="card stat" data-icon="heart"><b>∞</b>Curiosity</div>
         </div>
 
-        <!-- PROFILE PICTURE -->
-        <div class="hero-art">
+        <a class="btn fill" href="#personal" data-icon="arrow">Personal Info</a>
+        <a class="btn" href="#achievements" data-icon="trophy">Achievements</a>
 
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-
-            <div class="portrait-ring">
-                <div class="portrait-inner">
-                    <img src="images/profile.jpg"
-                         alt="Patricia Kyle S. Navalta">
-                </div>
-            </div>
-
-            <div class="floating-tag tag-top">
-                ✦ Creative Mind
-            </div>
-
-            <div class="floating-tag tag-bottom">
-                &lt;/&gt; Clean Code
-            </div>
-
+        <div class="socials">
+          <a href="https://www.facebook.com/patriciakyle.nvlta" target="_blank" rel="noopener" data-icon="fb"></a>
+          <a href="https://www.instagram.com/cialattee_/" target="_blank" rel="noopener" data-icon="ig"></a>
+          <a href="https://github.com/" target="_blank" rel="noopener" data-icon="github"></a>
         </div>
+      </div>
 
+      <div class="right">
+        <div class="photo-wrap">
+          <div class="photo-ring">
+            <img src="images/profile.jpg" alt="Patricia Kyle Navalta" data-fallback="PN">
+          </div>
+          <span class="orb o1"></span><span class="orb o2"></span>
+        </div>
+      </div>
     </section>
 
-
-    <!-- PERSONAL INFORMATION PAGE -->
-    <section class="page personal-page" id="personal">
-
-        <div class="personal-heading">
-            <span class="section-kicker">&lt;about /&gt;</span>
-
-            <h2>Personal <span>Information</span></h2>
-
-            <p>
-                A little more about who I am, what I enjoy,
-                and what I bring to the table.
-            </p>
+    <!-- ================= PERSONAL INFORMATION ================= -->
+    <section class="page" id="personal">
+      <div class="about">
+        <h1 data-icon="user">About <span>Me</span></h1>
+        <p>
+          I'm <b class="highlight">Patricia Kyle S. Navalta</b>, a Website Technology
+          student who loves turning ideas into clean, working websites. I enjoy coding,
+          perfecting small details, and learning something new with every project.
+        </p>
+        <div class="code-window" aria-hidden="true">
+          <span class="sym" data-icon="code"></span>
+          <span class="bubble" data-icon="laptop"></span>
         </div>
+      </div>
 
-        <div class="about-block">
+      <div class="card profile">
+        <h3 data-icon="user">My Profile</h3>
+        <div class="row"><small data-icon="user">Full Name</small> Patricia Kyle S. Navalta</div>
+        <div class="row"><small data-icon="book">Course</small> Website Technology</div>
+        <div class="row"><small data-icon="cap">School</small> University of the Cordilleras</div>
+        <div class="row"><small data-icon="cake">Birthday</small> July 16, 2008</div>
+      </div>
 
-            <h3><span>//</span> About Me</h3>
-
-            <p>
-                Hi, I'm <strong>Patricia Kyle S. Navalta</strong>,
-                a Website Technology student who loves turning ideas
-                into clean, working websites. I'll show how a page
-                comes together behind the scenes, from the first
-                line of HTML to the final polish.
-            </p>
-
-            <p>
-                My focus is to create work that not only looks good
-                but leaves a lasting impression. I enjoy coding,
-                perfecting small details, and learning something
-                new with every project.
-            </p>
-
+      <div class="columns">
+        <div class="card column">
+          <h3 data-icon="star">Interests</h3>
+          <div class="item" data-icon="globe">Web development</div>
+          <div class="item" data-icon="code">Coding and problem solving</div>
+          <div class="item" data-icon="palette">Clean design</div>
+          <div class="item" data-icon="gear">Technology and gadgets</div>
         </div>
-
-
-        <!-- PROFILE DETAILS -->
-        <div class="profile-panel">
-
-            <div class="panel-heading">
-                <span class="panel-icon">▣</span>
-                <h3>My Profile</h3>
-            </div>
-
-            <div class="profile-grid">
-
-                <div class="profile-item">
-                    <span>FULL NAME</span>
-                    <strong>Patricia Kyle S. Navalta</strong>
-                </div>
-
-                <div class="profile-item">
-                    <span>COURSE</span>
-                    <strong>Website Technology</strong>
-                </div>
-
-                <div class="profile-item">
-                    <span>SCHOOL</span>
-                    <strong>University of the Cordilleras</strong>
-                </div>
-
-                <div class="profile-item">
-                    <span>BIRTHDAY</span>
-                    <strong>July 16, 2008</strong>
-                </div>
-
-            </div>
-
+        <div class="card column">
+          <h3 data-icon="heart">Hobbies</h3>
+          <div class="item" data-icon="pencil">Editing</div>
+          <div class="item" data-icon="play">Playing</div>
+          <div class="item" data-icon="chef">Cooking</div>
+          <div class="item" data-icon="broom">Cleaning</div>
         </div>
-
-
-        <!-- INTERESTS, HOBBIES AND STRENGTHS -->
-        <div class="info-columns">
-
-            <div class="info-card">
-                <div class="info-title">
-                    <span>✧</span>
-                    <h3>Interests</h3>
-                </div>
-
-                <ul>
-                    <li>Web development</li>
-                    <li>Coding and problem solving</li>
-                    <li>Clean design</li>
-                    <li>Technology and gadgets</li>
-                </ul>
-            </div>
-
-
-            <div class="info-card">
-                <div class="info-title">
-                    <span>♡</span>
-                    <h3>Hobbies</h3>
-                </div>
-
-                <ul>
-                    <li>Editing</li>
-                    <li>Playing</li>
-                    <li>Cooking</li>
-                    <li>Cleaning</li>
-                </ul>
-            </div>
-
-
-            <div class="info-card">
-                <div class="info-title">
-                    <span>⚡</span>
-                    <h3>Strengths</h3>
-                </div>
-
-                <ul>
-                    <li>Creativity</li>
-                    <li>Focused</li>
-                    <li>Communication skills</li>
-                    <li>Time management skills</li>
-                </ul>
-            </div>
-
+        <div class="card column">
+          <h3 data-icon="bulb">Strengths</h3>
+          <div class="item" data-icon="bulb">Creativity</div>
+          <div class="item" data-icon="target">Focused</div>
+          <div class="item" data-icon="chat">Communication skills</div>
+          <div class="item" data-icon="clock">Time management skills</div>
         </div>
-
+      </div>
     </section>
 
-</main>
+    <!-- ================= ACHIEVEMENTS ================= -->
+    <section class="page" id="achievements">
+      <div>
+        <h1>My <span>Achievements</span></h1>
+        <div class="subtitle">My journey from elementary to college</div>
+      </div>
 
-<footer>
-    © <span id="year"></span> Patricia Kyle S. Navalta
-    • Built with HTML, CSS & JavaScript
-</footer>
+      <!-- SCHOOL LOGOS: palitan ang pangalan at taon -->
+      <div class="timeline">
+        <div class="school">
+          <div class="school-logo"><img src="images/elementary-logo.png" alt="Elementary logo" data-fallback="Logo"></div>
+          <b>Elementary School Name</b>
+          <div class="level">Elementary</div>
+          <small>2014 – 2020</small>
+        </div>
+        <div class="school">
+          <div class="school-logo"><img src="images/junior-high-logo.png" alt="Junior high logo" data-fallback="Logo"></div>
+          <b>Junior High School Name</b>
+          <div class="level">Junior High</div>
+          <small>2020 – 2024</small>
+        </div>
+        <div class="school">
+          <div class="school-logo"><img src="images/senior-high-logo.png" alt="Senior high logo" data-fallback="Logo"></div>
+          <b>Senior High School Name</b>
+          <div class="level">Senior High</div>
+          <small>2024 – 2026</small>
+        </div>
+        <div class="school">
+          <div class="school-logo"><img src="images/college-logo.png" alt="College logo" data-fallback="Logo"></div>
+          <b>University of the Cordilleras</b>
+          <div class="level">College</div>
+          <small>2026 – Present</small>
+        </div>
+      </div>
 
-<script src="script.js"></script>
+      <!-- 4 PICTURES: i-click para lumaki -->
+      <h2 data-icon="trophy">Achievement <span class="highlight">&nbsp;Pictures</span></h2>
+      <div class="gallery">
+        <div class="card slot">
+          <div class="frame"><img src="images/achievement1.jpg" alt="Achievement 1" data-zoom data-fallback="Picture 1"></div>
+          <p>Achievement 1</p>
+        </div>
+        <div class="card slot">
+          <div class="frame"><img src="images/achievement2.jpg" alt="Achievement 2" data-zoom data-fallback="Picture 2"></div>
+          <p>Achievement 2</p>
+        </div>
+        <div class="card slot">
+          <div class="frame"><img src="images/achievement3.jpg" alt="Achievement 3" data-zoom data-fallback="Picture 3"></div>
+          <p>Achievement 3</p>
+        </div>
+        <div class="card slot">
+          <div class="frame"><img src="images/achievement4.jpg" alt="Achievement 4" data-zoom data-fallback="Picture 4"></div>
+          <p>Achievement 4</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- ================= FAMILY / FRIENDS ================= -->
+    <section class="page" id="family">
+      <div>
+        <h1>Family <span>&amp; Friends</span></h1>
+        <div class="subtitle">The people who matter most to me</div>
+      </div>
+
+      <div class="people">
+        <div class="card person">
+          <div class="frame"><img src="images/person1.jpg" alt="Person 1" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Mother</small>
+        </div>
+        <div class="card person">
+          <div class="frame"><img src="images/person2.jpg" alt="Person 2" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Father</small>
+        </div>
+        <div class="card person">
+          <div class="frame"><img src="images/person3.jpg" alt="Person 3" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Sibling</small>
+        </div>
+        <div class="card person">
+          <div class="frame"><img src="images/person4.jpg" alt="Person 4" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Best Friend</small>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
-<button class="nav-link" data-page="achievements">
-    Achievements
-</button>
-
-<!-- ACHIEVEMENTS -->
-<section class="page achievements-page" id="achievements">
-
-    <div class="achievement-header">
-        <div>
-            <span class="achievement-label">&lt; MY JOURNEY /&gt;</span>
-            <h1>My <span>Achievements</span></h1>
-            <p>Small steps, big dreams — a journey of hard work,
-               dedication, and continuous growth.</p>
-        </div>
-
-        <div class="achievement-badge">🏆</div>
-    </div>
-
-    <!-- EDUCATIONAL JOURNEY -->
-    <div class="achievement-section">
-
-        <h2><span>✦</span> Educational Journey</h2>
-
-        <div class="school-grid">
-
-            <div class="school-card">
-                <div class="school-logo-placeholder">E</div>
-                <h3>Elementary</h3>
-                <p>Baloa Elementary School</p>
-                <span class="school-year">Elementary</span>
-            </div>
-
-            <div class="school-card">
-                <div class="school-logo-placeholder">JH</div>
-                <h3>Junior High School</h3>
-                <p>Tadian School of Arts and Trades</p>
-                <span class="school-year">Junior High</span>
-            </div>
-
-            <div class="school-card">
-                <div class="school-logo-placeholder">SH</div>
-                <h3>Senior High School</h3>
-                <p>Tadian School of Arts and Trades</p>
-                <span class="school-year">Senior High</span>
-            </div>
-
-            <div class="school-card featured-school">
-                <div class="school-logo-placeholder">UC</div>
-                <h3>College</h3>
-                <p>University of the Cordilleras</p>
-                <span class="school-year">Present</span>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- SCHOOL MEMORIES -->
-    <div class="achievement-section memories-section">
-
-        <h2><span>✦</span> My School Memories</h2>
-
-        <div class="memory-grid">
-
-            <div class="memory-card memory-one">
-                <div class="memory-placeholder">
-                    <span>＋</span>
-                    <p>Elementary Photo</p>
-                </div>
-                <h4>Elementary Days</h4>
-            </div>
-
-            <div class="memory-card memory-two">
-                <div class="memory-placeholder">
-                    <span>＋</span>
-                    <p>Junior High Photo</p>
-                </div>
-                <h4>Junior High Memories</h4>
-            </div>
-
-            <div class="memory-card memory-three">
-                <div class="memory-placeholder">
-                    <span>＋</span>
-                    <p>Senior High Photo</p>
-                </div>
-                <h4>Senior High Memories</h4>
-            </div>
-
-            <div class="memory-card memory-four">
-                <div class="memory-placeholder">
-                    <span>＋</span>
-                    <p>College Photo</p>
-                </div>
-                <h4>College Life</h4>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- AWARDS -->
-    <div class="achievement-section awards-section">
-
-        <h2><span>✦</span> Awards & Recognitions</h2>
-
-        <div class="awards-grid">
-
-            <div class="award-card">
-                <span class="award-icon">🏅</span>
-                <div>
-                    <h3>Academic Excellence</h3>
-                    <p>Academic Recognition</p>
-                </div>
-            </div>
-
-            <div class="award-card">
-                <span class="award-icon">⭐</span>
-                <div>
-                    <h3>With Honors</h3>
-                    <p>Academic Achievement</p>
-                </div>
-            </div>
-
-            <div class="award-card">
-                <span class="award-icon">🏆</span>
-                <div>
-                    <h3>Special Awards</h3>
-                    <p>Personal Achievements</p>
-                </div>
-            </div>
-
-            <div class="award-card">
-                <span class="award-icon">🎓</span>
-                <div>
-                    <h3>Continuous Learning</h3>
-                    <p>Growing and improving</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</section>
-
-<button class="nav-link" data-page="achievements">
-    Achievements
-</button>
-<div class="school-logo-placeholder">UC</div>
-<img src="images/uc-logo.png"
-     class="school-logo-img"
-     alt="University of the Cordilleras">
-<img src="images/college-photo.jpg"
-     class="memory-photo"
-     alt="College memory">
