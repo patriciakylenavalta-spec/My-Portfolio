@@ -1,4 +1,277 @@
 
+/* ==========================
+   ACHIEVEMENTS PAGE
+========================== */
+
+.achievements-page {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 13px;
+    padding: 12px 0;
+    min-height: 0;
+    height: calc(100vh - 145px);
+    overflow: hidden;
+}
+
+.achievements-page.active {
+    display: flex;
+}
+
+.achievement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 12px;
+}
+
+.achievement-label {
+    color: #c16aff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.achievement-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(27px, 3vw, 40px);
+    margin: 5px 0;
+}
+
+.achievement-header h1 span {
+    color: #bd54ff;
+    text-shadow: 0 0 15px #9d24f2;
+}
+
+.achievement-header p {
+    color: #b9adc9;
+    font-size: 13px;
+}
+
+.achievement-badge {
+    font-size: 55px;
+    filter: drop-shadow(0 0 15px #a52cff);
+    padding-right: 25px;
+}
+
+/* SECTION */
+
+.achievement-section {
+    padding: 12px 15px;
+    border: 1px solid rgba(177, 77, 255, 0.45);
+    border-radius: 17px;
+    background: linear-gradient(
+        110deg,
+        rgba(38, 17, 59, 0.75),
+        rgba(12, 7, 20, 0.9)
+    );
+    box-shadow: 0 0 18px rgba(139, 35, 220, 0.1);
+}
+
+.achievement-section h2 {
+    font-size: 16px;
+    margin-bottom: 11px;
+}
+
+.achievement-section h2 span {
+    color: #c15cff;
+    margin-right: 7px;
+}
+
+/* EDUCATION CARDS */
+
+.school-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.school-card {
+    min-width: 0;
+    text-align: center;
+    padding: 12px 8px;
+    border: 1px solid rgba(182, 89, 255, 0.4);
+    border-radius: 14px;
+    background: rgba(13, 8, 23, 0.9);
+    transition: 0.3s;
+}
+
+.school-card:hover {
+    transform: translateY(-4px);
+    border-color: #c15cff;
+    box-shadow: 0 0 18px rgba(165, 44, 255, 0.35);
+}
+
+.school-logo-placeholder {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 7px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 2px solid #bd54ff;
+    background: linear-gradient(135deg, #39115a, #13091e);
+    color: #e2baff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(177, 77, 255, 0.4);
+}
+
+.school-card h3 {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.school-card p {
+    color: #b9adc9;
+    font-size: 11px;
+    min-height: 28px;
+    line-height: 1.4;
+}
+
+.school-year {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    color: white;
+    background: linear-gradient(100deg, #7615c4, #bd43ff);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.featured-school {
+    border-color: #d18aff;
+    background: linear-gradient(
+        145deg,
+        rgba(91, 25, 137, 0.45),
+        rgba(13, 8, 23, 0.95)
+    );
+}
+
+/* MEMORIES GALLERY */
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.memory-card {
+    min-width: 0;
+    padding: 7px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(177, 77, 255, 0.25);
+}
+
+.memory-placeholder {
+    height: 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border: 1px dashed #a94bdf;
+    border-radius: 9px;
+    background: linear-gradient(
+        135deg,
+        rgba(89, 26, 130, 0.3),
+        rgba(13, 8, 23, 0.8)
+    );
+    color: #c78aff;
+}
+
+.memory-placeholder span {
+    font-size: 25px;
+}
+
+.memory-placeholder p {
+    font-size: 10px;
+}
+
+.memory-card h4 {
+    text-align: center;
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+/* AWARDS */
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.award-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    min-width: 0;
+    border: 1px solid rgba(177, 77, 255, 0.3);
+    border-radius: 12px;
+    background: rgba(16, 9, 27, 0.9);
+}
+
+.award-icon {
+    font-size: 25px;
+    filter: drop-shadow(0 0 7px #a52cff);
+}
+
+.award-card h3 {
+    font-size: 11px;
+}
+
+.award-card p {
+    color: #b9adc9;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 760px) {
+
+    .achievements-page,
+    .achievements-page.active {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        padding: 25px 0;
+    }
+
+    .achievement-header {
+        padding: 10px 0;
+    }
+
+    .school-grid,
+    .memory-grid,
+    .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievement-badge {
+        font-size: 35px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .school-grid,
+    .memory-grid,
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-header p {
+        max-width: 260px;
+        line-height: 1.5;
+    }
+}
 
 /* PERSONAL INFORMATION - ONE SCREEN ONLY */
 
