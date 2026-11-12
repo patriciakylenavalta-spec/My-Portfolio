@@ -1,296 +1,262 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Patricia Kyle Navalta | Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#07030f; --panel:rgba(32,10,70,.55); --line:#6d28d9; --glow:#8b2cff;
-  --accent:#b44cff; --text:#f3ecff; --muted:#c3b3e6;
-  --head:'Orbitron','Segoe UI',sans-serif; --body:'Inter','Segoe UI',sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden}              /* no page scrolling */
-body{
-  font-family:var(--body);color:var(--text);
-  background:
-    radial-gradient(900px 500px at 85% 20%,rgba(120,40,255,.28),transparent 60%),
-    radial-gradient(700px 500px at 0% 100%,rgba(90,20,200,.3),transparent 60%),
-    var(--bg);
-  display:flex;flex-direction:column;padding:clamp(8px,1.6vw,22px);gap:clamp(8px,1.6vh,18px);
-}
-/* ---------- NAV ---------- */
-nav{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;
-  background:rgba(20,6,45,.6);box-shadow:0 0 22px rgba(139,44,255,.35),inset 0 0 18px rgba(139,44,255,.12);
-}
-.logo{font-family:var(--head);font-weight:700;font-size:clamp(14px,1.8vw,22px);white-space:nowrap}
-.logo span{color:var(--accent)}
-.tabs{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
-.tab{
-  background:none;border:0;color:var(--text);font:500 clamp(11px,1.05vw,14px)/1 var(--body);
-  letter-spacing:.04em;text-transform:uppercase;padding:11px clamp(10px,1.4vw,20px);
-  border-radius:999px;cursor:pointer;transition:background .2s,box-shadow .2s;
-}
-.tab:hover{background:rgba(139,44,255,.2)}
-.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.tab.active{background:linear-gradient(180deg,#9b3dff,#6a1fe0);box-shadow:0 0 18px rgba(155,61,255,.8)}
-/* ---------- PAGES ---------- */
-main{flex:1;min-height:0;position:relative}
-.page{position:absolute;inset:0;display:none;min-height:0}
-.page.active{display:flex;animation:fade .4s ease}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.page.active{animation:none}}
-h1,h2,h3{font-family:var(--head)}
-.glow{color:var(--accent);text-shadow:0 0 18px rgba(180,76,255,.6)}
-.card{
-  border:1.5px solid var(--line);border-radius:18px;background:var(--panel);
-  box-shadow:0 0 24px rgba(109,40,217,.35),inset 0 0 20px rgba(139,44,255,.08);
-}
-/* ---------- HOME ---------- */
-#home{align-items:center;justify-content:space-between;gap:3vw;padding:0 2vw}
-.hero-text{flex:1.2;min-width:0}
-.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 16px;font:500 clamp(11px,1.2vw,15px) var(--head);margin-bottom:2vh}
-.pill i{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
-.hero-text h1{font-weight:500;font-size:clamp(22px,4.2vw,58px);line-height:1.15}
-.hero-text h1 b{display:block;font-weight:700;color:var(--accent);text-shadow:0 0 20px rgba(180,76,255,.5);font-size:clamp(24px,4.6vw,64px)}
-.sub{margin-top:2.2vh;font:500 clamp(16px,2vw,28px) var(--head)}
-.sub em{font-style:normal;color:var(--accent)}
-.hero-text p{margin-top:1.2vh;max-width:52ch;color:var(--muted);font-size:clamp(12px,1.2vw,17px);line-height:1.6}
-.stats{display:flex;gap:12px;margin-top:2.6vh;flex-wrap:wrap}
-.stat{padding:clamp(8px,1.4vh,16px) clamp(12px,1.6vw,24px);text-align:center;min-width:clamp(80px,9vw,130px)}
-.stat strong{display:block;font:700 clamp(18px,2.4vw,32px) var(--head)}
-.stat small{color:var(--muted);font-size:clamp(10px,.95vw,13px)}
-.cta{display:flex;gap:12px;margin-top:2.6vh;flex-wrap:wrap}
-.btn{font:500 clamp(12px,1.2vw,16px) var(--body);padding:clamp(10px,1.6vh,15px) clamp(18px,2vw,32px);border-radius:999px;border:1.5px solid var(--glow);color:var(--text);background:none;cursor:pointer}
-.btn.fill{background:linear-gradient(180deg,#9b3dff,#6a1fe0);box-shadow:0 0 20px rgba(155,61,255,.7)}
-.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.social{display:flex;gap:12px;margin-top:2.2vh}
-.social a{width:clamp(36px,3.8vw,48px);height:clamp(36px,3.8vw,48px);display:grid;place-items:center;border:1.5px solid var(--line);border-radius:50%;color:var(--text);text-decoration:none;font:700 14px var(--head);transition:box-shadow .2s}
-.social a:hover,.social a:focus-visible{box-shadow:0 0 16px var(--glow);outline:none}
-.hero-photo{flex:1;display:grid;place-items:center;min-width:0}
-.ring{
-  width:min(42vw,62vh);aspect-ratio:1;border-radius:50%;padding:10px;
-  background:conic-gradient(from 200deg,#6a1fe0,#c36bff,#6a1fe0);
-  box-shadow:0 0 50px rgba(139,44,255,.7),0 0 120px rgba(109,40,217,.4);
-}
-.ring .photo{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#150a30;border:4px solid #0a0418}
-/* ---------- photo slot (shared) ---------- */
-.photo{position:relative;display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center}
-.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* ---------- PERSONAL ---------- */
-#personal{flex-direction:column;gap:clamp(8px,1.6vh,16px);padding:0 1vw}
-.about h2{font-size:clamp(22px,3.2vw,40px);margin-bottom:1vh}
-.about p{color:var(--muted);font-size:clamp(11px,1.15vw,16px);line-height:1.55;max-width:80ch}
-.about p b{color:var(--accent)}
-.profile{padding:clamp(10px,1.8vh,20px) clamp(14px,2vw,28px)}
-.profile h3{font-size:clamp(14px,1.5vw,20px);margin-bottom:1.2vh;padding-bottom:1vh;border-bottom:1px solid var(--line)}
-.rows{display:grid;grid-template-columns:1fr 1fr;gap:1vh 2.4vw}
-.row{display:flex;gap:12px;align-items:baseline;border-bottom:1px solid rgba(109,40,217,.4);padding:.6vh 0}
-.row span{color:var(--accent);font:600 clamp(10px,.95vw,13px) var(--body);text-transform:uppercase;min-width:84px}
-.row div{font-size:clamp(12px,1.25vw,17px)}
-.lists{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.4vw,18px)}
-.list{padding:clamp(10px,1.6vh,18px);display:flex;flex-direction:column;gap:clamp(5px,1vh,10px);min-height:0}
-.list h3{font-size:clamp(13px,1.4vw,19px);padding-bottom:.8vh;border-bottom:1px solid var(--line)}
-.list ul{display:flex;flex-direction:column;gap:clamp(4px,.9vh,10px)}
-.list li{list-style:none;background:rgba(10,4,24,.7);border-radius:12px;padding:clamp(6px,1.2vh,12px) 14px;font-size:clamp(11px,1.15vw,15px)}
-/* ---------- ACHIEVEMENT + FAMILY ---------- */
-#achievement,#family{flex-direction:column;gap:clamp(8px,1.6vh,16px);padding:0 1vw}
-.title h2{font-size:clamp(22px,3.2vw,40px)}
-.title p{color:var(--muted);font-size:clamp(11px,1.15vw,16px);margin-top:.6vh}
-.grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(8px,1.4vw,18px)}
-.grid.four{grid-template-columns:repeat(4,1fr)}
-.item{display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.item .photo{flex:1;min-height:0;background:linear-gradient(135deg,#1b0b3d,#2d0f66)}
-.item .info{padding:clamp(8px,1.4vh,14px) 14px}
-.item h3{font-size:clamp(12px,1.25vw,17px)}
-.item p{color:var(--muted);font-size:clamp(10px,1vw,14px);margin-top:.4vh}
-.circle{justify-content:center;align-items:center;text-align:center}
-.circle .photo{flex:none;height:62%;aspect-ratio:1;max-width:80%;border-radius:50%;overflow:hidden;border:3px solid var(--glow);box-shadow:0 0 18px rgba(139,44,255,.6);margin-top:1vh}
-/* ---------- SMALL SCREENS ---------- */
-@media (max-width:820px){
-  nav{border-radius:22px}.logo{display:none}.tabs{width:100%;justify-content:space-between}
-  #home{flex-direction:column-reverse;justify-content:center;text-align:center;gap:1vh}
-  .hero-text p{display:none}
-  .stats,.cta,.social{justify-content:center}
-  .ring{width:min(46vw,28vh)}
-  .lists{grid-template-columns:1fr}.list li{padding:5px 12px}.rows{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,minmax(0,1fr))}
-  .grid.four{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,minmax(0,1fr))}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricia Kyle | My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav>
-  <div class="logo">&lt;/&gt; Patricia<span>.</span></div>
-  <div class="tabs" role="tablist">
-    <button class="tab active" role="tab" data-page="home">Home</button>
-    <button class="tab" role="tab" data-page="personal">Personal Information</button>
-    <button class="tab" role="tab" data-page="achievement">Achievement</button>
-    <button class="tab" role="tab" data-page="family">Family / Friends</button>
-  </div>
-</nav>
+<header class="navbar">
+    <a href="#" class="logo">&lt;/&gt; Patricia<span>.</span></a>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <nav id="menu">
+        <button class="nav-link active" data-page="home">Home</button>
+        <button class="nav-link" data-page="personal">Personal Information</button>
+    </nav>
+</header>
 
 <main>
 
-  <!-- ============ HOME ============ -->
-  <section class="page active" id="home">
-    <div class="hero-text">
-      <div class="pill"><i></i>Welcome</div>
-      <h1>Hello Everyone I’m <b>Patricia Kyle Navalta</b></h1>
-      <div class="sub">I love <em>coding</em>!</div>
-      <p>I’m Patricia Kyle S. Navalta, a Website Technology student focused on building clean, fast and thoughtful websites with HTML, CSS and JavaScript.</p>
-      <div class="stats">
-        <div class="card stat"><strong>3+</strong><small>Languages learned</small></div>
-        <div class="card stat"><strong>1</strong><small>Major: Web Tech</small></div>
-        <div class="card stat"><strong>∞</strong><small>Curiosity</small></div>
-      </div>
-      <div class="cta">
-        <button class="btn fill" data-go="personal">Personal Info</button>
-        <button class="btn" data-go="achievement">Achievement</button>
-      </div>
-      <div class="social">
-        <a href="https://www.facebook.com/patriciakyle.nvlta" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-        <a href="https://www.instagram.com/cialattee_/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-        <a href="#" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <div class="ring">
-        <!-- Put your picture at images/profile.jpg -->
-        <div class="photo"><img src="images/profile.jpg" alt="Patricia" onerror="this.remove()">Add images/profile.jpg</div>
-      </div>
-    </div>
-  </section>
+    <!-- HOME PAGE -->
+    <section class="page home-page active" id="home">
 
-  <!-- ============ PERSONAL INFORMATION ============ -->
-  <section class="page" id="personal">
-    <div class="about">
-      <h2>About <span class="glow">Me</span></h2>
-      <p>I’m <b>Patricia Kyle S. Navalta</b>, a Website Technology student who loves turning ideas into clean, working websites. I enjoy coding, perfecting small details and learning something new with every project.</p>
-    </div>
+        <div class="hero-copy">
 
-    <div class="card profile">
-      <h3>My Profile</h3>
-      <div class="rows">
-        <div class="row"><span>Full name</span><div>Patricia Kyle S. Navalta</div></div>
-        <div class="row"><span>Course</span><div>Website Technology</div></div>
-        <div class="row"><span>School</span><div>University of the Cordilleras</div></div>
-        <div class="row"><span>Birthday</span><div>July 16, 2008</div></div>
-      </div>
-    </div>
+            <div class="welcome">
+                <span></span> Welcome to my portfolio
+            </div>
 
-    <div class="lists">
-      <div class="card list"><h3>Interests</h3>
-        <ul><li>Web development</li><li>Coding and problem solving</li><li>Clean design</li><li>Technology and gadgets</li></ul></div>
-      <div class="card list"><h3>Hobbies</h3>
-        <ul><li>Editing</li><li>Playing</li><li>Cooking</li><li>Cleaning</li></ul></div>
-      <div class="card list"><h3>Strengths</h3>
-        <ul><li>Creativity</li><li>Focused</li><li>Communication skills</li><li>Time management skills</li></ul></div>
-    </div>
-  </section>
+            <p class="intro">Hello, everyone! I'm</p>
 
-  <!-- ============ ACHIEVEMENT ============ -->
-  <section class="page" id="achievement">
-    <div class="title">
-      <h2>My <span class="glow">Achievements</span></h2>
-      <p>Certificates, awards and projects I’m proud of.</p>
-    </div>
-    <div class="grid">
-      <!-- Copy one <article> per achievement. Put images in the images/ folder. -->
-      <article class="card item">
-        <div class="photo"><img src="images/achievement1.jpg" alt="" onerror="this.remove()">Add images/achievement1.jpg</div>
-        <div class="info"><h3>Achievement title 1</h3><p>Short description · Year</p></div>
-      </article>
-      <article class="card item">
-        <div class="photo"><img src="images/achievement2.jpg" alt="" onerror="this.remove()">Add images/achievement2.jpg</div>
-        <div class="info"><h3>Achievement title 2</h3><p>Short description · Year</p></div>
-      </article>
-      <article class="card item">
-        <div class="photo"><img src="images/achievement3.jpg" alt="" onerror="this.remove()">Add images/achievement3.jpg</div>
-        <div class="info"><h3>Achievement title 3</h3><p>Short description · Year</p></div>
-      </article>
-      <article class="card item">
-        <div class="photo"><img src="images/achievement4.jpg" alt="" onerror="this.remove()">Add images/achievement4.jpg</div>
-        <div class="info"><h3>Achievement title 4</h3><p>Short description · Year</p></div>
-      </article>
-      <article class="card item">
-        <div class="photo"><img src="images/achievement5.jpg" alt="" onerror="this.remove()">Add images/achievement5.jpg</div>
-        <div class="info"><h3>Achievement title 5</h3><p>Short description · Year</p></div>
-      </article>
-      <article class="card item">
-        <div class="photo"><img src="images/achievement6.jpg" alt="" onerror="this.remove()">Add images/achievement6.jpg</div>
-        <div class="info"><h3>Achievement title 6</h3><p>Short description · Year</p></div>
-      </article>
-    </div>
-  </section>
+            <h1>
+                Patricia Kyle
+                <span>Navalta</span>
+            </h1>
 
-  <!-- ============ FAMILY / FRIENDS ============ -->
-  <section class="page" id="family">
-    <div class="title">
-      <h2>Family <span class="glow">&amp; Friends</span></h2>
-      <p>The people who support me.</p>
-    </div>
-    <div class="grid four">
-      <!-- Copy one <article> per person. Put images in the images/ folder. -->
-      <article class="card item circle">
-        <div class="photo"><img src="images/family1.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Mother’s name</h3><p>Mother</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/family2.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Father’s name</h3><p>Father</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/family3.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Sibling’s name</h3><p>Sibling</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/family4.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Family member</h3><p>Relation</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/friend1.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Friend’s name</h3><p>Best friend</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/friend2.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Friend’s name</h3><p>Friend</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/friend3.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Friend’s name</h3><p>Classmate</p></div>
-      </article>
-      <article class="card item circle">
-        <div class="photo"><img src="images/friend4.jpg" alt="" onerror="this.remove()">Photo</div>
-        <div class="info"><h3>Friend’s name</h3><p>Friend</p></div>
-      </article>
-    </div>
-  </section>
+            <p class="role">
+                I love <strong id="typedWord">coding</strong>!
+            </p>
+
+            <p class="description">
+                I'm Patricia Kyle S. Navalta, a Website Technology
+                student focused on building clean, fast and thoughtful
+                websites with HTML, CSS and JavaScript. I enjoy turning
+                creative ideas into digital experiences and learning
+                something new with every project.
+            </p>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span>&lt;/&gt;</span>
+                    <h2>3+</h2>
+                    <p>Languages Learned</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>▣</span>
+                    <h2>1</h2>
+                    <p>Major · Web Tech</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>♡</span>
+                    <h2>∞</h2>
+                    <p>Curiosity</p>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+                <button class="primary-btn" data-page="personal">
+                    Personal Info ↗
+                </button>
+
+                <a class="secondary-btn"
+                   href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
+                   target="_blank">
+                    View GitHub ↗
+                </a>
+            </div>
+
+            <div class="social-links">
+
+                <a href="https://www.facebook.com/patriciakyle.nvlta"
+                   target="_blank">f</a>
+
+                <a href="https://www.instagram.com/?hl=en"
+                   target="_blank">◎</a>
+
+                <a href="https://github.com/patriciakylenavalta-spec/My-Portfolio"
+                   target="_blank">⌘</a>
+
+            </div>
+
+        </div>
+
+        <!-- PROFILE PICTURE -->
+        <div class="hero-art">
+
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+
+            <div class="portrait-ring">
+                <div class="portrait-inner">
+                    <img src="images/profile.jpg"
+                         alt="Patricia Kyle S. Navalta">
+                </div>
+            </div>
+
+            <div class="floating-tag tag-top">
+                ✦ Creative Mind
+            </div>
+
+            <div class="floating-tag tag-bottom">
+                &lt;/&gt; Clean Code
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PERSONAL INFORMATION PAGE -->
+    <section class="page personal-page" id="personal">
+
+        <div class="personal-heading">
+            <span class="section-kicker">&lt;about /&gt;</span>
+
+            <h2>Personal <span>Information</span></h2>
+
+            <p>
+                A little more about who I am, what I enjoy,
+                and what I bring to the table.
+            </p>
+        </div>
+
+        <div class="about-block">
+
+            <h3><span>//</span> About Me</h3>
+
+            <p>
+                Hi, I'm <strong>Patricia Kyle S. Navalta</strong>,
+                a Website Technology student who loves turning ideas
+                into clean, working websites. I'll show how a page
+                comes together behind the scenes, from the first
+                line of HTML to the final polish.
+            </p>
+
+            <p>
+                My focus is to create work that not only looks good
+                but leaves a lasting impression. I enjoy coding,
+                perfecting small details, and learning something
+                new with every project.
+            </p>
+
+        </div>
+
+
+        <!-- PROFILE DETAILS -->
+        <div class="profile-panel">
+
+            <div class="panel-heading">
+                <span class="panel-icon">▣</span>
+                <h3>My Profile</h3>
+            </div>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+                    <span>FULL NAME</span>
+                    <strong>Patricia Kyle S. Navalta</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>COURSE</span>
+                    <strong>Website Technology</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>SCHOOL</span>
+                    <strong>University of the Cordilleras</strong>
+                </div>
+
+                <div class="profile-item">
+                    <span>BIRTHDAY</span>
+                    <strong>July 16, 2008</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTERESTS, HOBBIES AND STRENGTHS -->
+        <div class="info-columns">
+
+            <div class="info-card">
+                <div class="info-title">
+                    <span>✧</span>
+                    <h3>Interests</h3>
+                </div>
+
+                <ul>
+                    <li>Web development</li>
+                    <li>Coding and problem solving</li>
+                    <li>Clean design</li>
+                    <li>Technology and gadgets</li>
+                </ul>
+            </div>
+
+
+            <div class="info-card">
+                <div class="info-title">
+                    <span>♡</span>
+                    <h3>Hobbies</h3>
+                </div>
+
+                <ul>
+                    <li>Editing</li>
+                    <li>Playing</li>
+                    <li>Cooking</li>
+                    <li>Cleaning</li>
+                </ul>
+            </div>
+
+
+            <div class="info-card">
+                <div class="info-title">
+                    <span>⚡</span>
+                    <h3>Strengths</h3>
+                </div>
+
+                <ul>
+                    <li>Creativity</li>
+                    <li>Focused</li>
+                    <li>Communication skills</li>
+                    <li>Time management skills</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
-<script>
-  // Switch pages without scrolling
-  const tabs  = document.querySelectorAll('.tab');
-  const pages = document.querySelectorAll('.page');
+<footer>
+    © <span id="year"></span> Patricia Kyle S. Navalta
+    • Built with HTML, CSS & JavaScript
+</footer>
 
-  function show(id){
-    pages.forEach(p => p.classList.toggle('active', p.id === id));
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.page === id));
-    history.replaceState(null, '', '#' + id);
-  }
-  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.page)));
-  document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => show(b.dataset.go)));
+<script src="script.js"></script>
 
-  const start = location.hash.slice(1);
-  if (document.getElementById(start)) show(start);
-</script>
 </body>
 </html>
+
