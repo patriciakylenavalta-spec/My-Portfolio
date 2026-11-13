@@ -1,58 +1,211 @@
-<section class="page" id="achievements">
-  <div>
-    <h1>My <span>Achievements</span></h1>
-    <div class="subtitle">My journey from elementary to college</div>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patricia | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
 
-  <div class="timeline">
+  <!-- NAVBAR (built by script.js) -->
+  <nav id="navbar"></nav>
 
-    <div class="school">
-      <div class="school-logo"><img src="image/elem logo.jpg" alt="Uyong Elementary School Logo" data-fallback="Logo"></div>
-      <b>Uyong Elementary School</b>
-      <div class="level">Elementary</div>
-      <small>2014 – 2020</small>
-    </div>
+  <main>
 
-    <div class="school">
-      <div class="school-logo"><img src="image/2046e59f-de57-4ba6-9d78-db2cb0d4cf69 (1).jpg" alt="Labrador National High School Logo" data-fallback="Logo"></div>
-      <b>Labrador National High School</b>
-      <div class="level">Junior High</div>
-      <small>2020 – 2024</small>
-    </div>
+    <!-- ================= HOME ================= -->
+    <section class="page home" id="home">
+      <div class="left">
+        <span class="welcome-tag card">Welcome</span>
+        <div class="greeting">Hello Everyone I’m</div>
+        <div class="fullname">Patricia Kyle Navalta</div>
 
-    <div class="school">
-      <div class="school-logo"><img src="image/SENIOR LOGP.png" alt="La Salette Logo" data-fallback="Logo"></div>
-      <b>Escuela de Nuestra Señora de La Salette</b>
-      <div class="level">Senior High</div>
-      <small>2024 – 2026</small>
-    </div>
+        <p class="intro">
+          <span class="love">I love <span class="highlight" id="typed">coding</span><span class="cursor">|</span></span>
+          I'm Patricia Kyle S. Navalta, a Website Technology student focused on building
+          clean, fast and thoughtful websites with HTML, CSS and JavaScript.
+        </p>
 
-    <div class="school">
-      <div class="school-logo"><img src="image/a98e35c5-5719-4798-93cb-266c15cf5ba8.jpg" alt="University of the Cordilleras Logo" data-fallback="Logo"></div>
-      <b>University of the Cordilleras</b>
-      <div class="level">College</div>
-      <small>2026 – Present</small>
-    </div>
+        <div class="stats">
+          <div class="card stat" data-icon="code"><b>3+</b>Languages Learned</div>
+          <div class="card stat" data-icon="laptop"><b>1</b>Major: Web Tech</div>
+          <div class="card stat" data-icon="heart"><b>∞</b>Curiosity</div>
+        </div>
 
-  </div>
+        <a class="btn fill" href="#personal" data-icon="arrow">Personal Info</a>
+        <a class="btn" href="#achievements" data-icon="trophy">Achievements</a>
 
-  <h2 data-icon="trophy">Achievement <span class="highlight">&nbsp;Pictures</span></h2>
-  <div class="gallery">
-    <div class="card slot">
-      <div class="frame"><img src="image/1ST ACIEVEMENTS.jpg" alt="Achievement 1" data-zoom data-fallback="Picture 1"></div>
-      <p>With honors</p>
-    </div>
-    <div class="card slot">
-      <div class="frame"><img src="image/2ND ACHIEVEMENTS.jpg" alt="Achievement 2" data-zoom data-fallback="Picture 2"></div>
-      <p>Completed Diploma 2</p>
-    </div>
-    <div class="card slot">
-      <div class="frame"><img src="image/1cfa0234-c560-4e04-bf6c-80c8f70eaeb3.jpg" alt="Achievement 3" data-zoom data-fallback="Picture 3"></div>
-      <p>Best in Research</p>
-    </div>
-    <div class="card slot">
-      <div class="frame"><img src="image/ACHIEVEMENT 4.jpg" alt="Achievement 4" data-zoom data-fallback="Picture 4"></div>
-      <p>Completed Diploma (HUMMS)</p>
-    </div>
-  </div>
-</section>
+        <div class="socials">
+          <a href="https://www.facebook.com/patriciakyle.nvlta" target="_blank" rel="noopener" data-icon="fb"></a>
+          <a href="https://www.instagram.com/cialattee_/" target="_blank" rel="noopener" data-icon="ig"></a>
+          <a href="https://github.com/" target="_blank" rel="noopener" data-icon="github"></a>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="photo-wrap">
+          <div class="photo-ring">
+            <img src="image/patrcicia picture.jpg" alt="Patricia Kyle Navalta" data-fallback="PN">
+          </div>
+          <span class="orb o1"></span><span class="orb o2"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PERSONAL INFORMATION ================= -->
+    <section class="page" id="personal">
+      <div class="about">
+        <h1 data-icon="user">Personal <span>Information</span></h1>
+        <p>
+          I'm <b class="highlight">Patricia Kyle S. Navalta</b>, a Website Technology
+          student who loves turning ideas into clean, working websites. I enjoy coding,
+          perfecting small details, and learning something new with every project.
+        </p>
+        <div class="code-window" aria-hidden="true">
+          <span class="sym" data-icon="code"></span>
+          <span class="bubble" data-icon="laptop"></span>
+        </div>
+      </div>
+
+      <div class="card profile">
+        <h3 data-icon="user">My Profile</h3>
+        <div class="row"><small data-icon="user">Full Name</small> Patricia Kyle S. Navalta</div>
+        <div class="row"><small data-icon="book">Course</small> Website Technology</div>
+        <div class="row"><small data-icon="cap">School</small> University of the Cordilleras</div>
+        <div class="row"><small data-icon="cake">Birthday</small> July 16, 2008</div>
+      </div>
+
+      <div class="columns">
+        <div class="card column">
+          <h3 data-icon="star">Interests</h3>
+          <div class="item" data-icon="globe">Web development</div>
+          <div class="item" data-icon="code">Coding and problem solving</div>
+          <div class="item" data-icon="palette">Clean design</div>
+          <div class="item" data-icon="gear">Technology and gadgets</div>
+        </div>
+        <div class="card column">
+          <h3 data-icon="heart">Hobbies</h3>
+          <div class="item" data-icon="pencil">Editing</div>
+          <div class="item" data-icon="play">Playing</div>
+          <div class="item" data-icon="chef">Cooking</div>
+          <div class="item" data-icon="broom">Cleaning</div>
+        </div>
+        <div class="card column">
+          <h3 data-icon="bulb">Strengths</h3>
+          <div class="item" data-icon="bulb">Creativity</div>
+          <div class="item" data-icon="target">Focused</div>
+          <div class="item" data-icon="chat">Communication skills</div>
+          <div class="item" data-icon="clock">Time management skills</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACHIEVEMENTS ================= -->
+    <section class="page" id="achievements">
+
+      <div>
+        <h1>My <span>Achievements</span></h1>
+        <div class="subtitle">My journey from elementary to college</div>
+      </div>
+
+      <!-- SCHOOL LOGOS -->
+      <div class="timeline">
+
+        <div class="school">
+          <div class="school-logo">
+            <img src="image/elem logo.jpg" alt="Uyong Elementary School Logo" data-fallback="Logo">
+          </div>
+          <b>Uyong Elementary School</b>
+          <div class="level">Elementary</div>
+          <small>2014 – 2020</small>
+        </div>
+
+        <div class="school">
+          <div class="school-logo">
+            <img src="2046e59f-de57-4ba6-9d78-db2cb0d4cf69 (1).jpg" alt="Labrador National High School Logo" data-fallback="Logo">
+          </div>
+          <b>Labrador National High School</b>
+          <div class="level">Junior High</div>
+          <small>2020 – 2024</small>
+        </div>
+
+        <div class="school">
+          <div class="school-logo">
+            <img src="image/SENIOR LOGP.png" alt="Escuela de Nuestra Señora de La Salette Logo" data-fallback="Logo">
+          </div>
+          <b>Escuela de Nuestra Señora de La Salette</b>
+          <div class="level">Senior High</div>
+          <small>2024 – 2026</small>
+        </div>
+
+        <div class="school">
+          <div class="school-logo">
+            <img src="image/a98e35c5-5719-4798-93cb-266c15cf5ba8.jpg" alt="University of the Cordilleras Logo" data-fallback="Logo">
+          </div>
+          <b>University of the Cordilleras</b>
+          <div class="level">College</div>
+          <small>2026 – Present</small>
+        </div>
+
+      </div>
+
+      <!-- 4 PICTURES: i-click para lumaki -->
+      <h2 data-icon="trophy">Achievement <span class="highlight">&nbsp;Pictures</span></h2>
+
+      <div class="gallery">
+
+        <div class="card slot">
+          <div class="frame"><img src="image/1ST ACIEVEMENTS.jpg" alt="With honors" data-zoom data-fallback="Picture 1"></div>
+          <p>With honors</p>
+        </div>
+
+        <div class="card slot">
+          <div class="frame"><img src="image/2ND ACHIEVEMENTS.jpg" alt="Completed Diploma 2" data-zoom data-fallback="Picture 2"></div>
+          <p>Completed Diploma 2</p>
+        </div>
+
+        <div class="card slot">
+          <div class="frame"><img src="image/1cfa0234-c560-4e04-bf6c-80c8f70eaeb3.jpg" alt="Best in Research" data-zoom data-fallback="Picture 3"></div>
+          <p>Best in Research</p>
+        </div>
+
+        <div class="card slot">
+          <div class="frame"><img src="image/ACHIEVEMENT 4.jpg" alt="Completed Diploma (HUMMS)" data-zoom data-fallback="Picture 4"></div>
+          <p>Completed Diploma (HUMMS)</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= FAMILY / FRIENDS ================= -->
+    <section class="page" id="family">
+      <div>
+        <h1>Family <span>&amp; Friends</span></h1>
+        <div class="subtitle">The people who matter most to me</div>
+      </div>
+
+      <div class="people">
+        <div class="card person">
+          <div class="frame"><img src="images/person1.jpg" alt="Person 1" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Mother</small>
+        </div>
+        <div class="card person">
+          <div class="frame"><img src="images/person2.jpg" alt="Person 2" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Father</small>
+        </div>
+        <div class="card person">
+          <div class="frame"><img src="images/person3.jpg" alt="Person 3" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Sibling</small>
+        </div>
+        <div class="card person">
+          <div class="frame"><img src="images/person4.jpg" alt="Person 4" data-zoom data-fallback="Picture here"></div>
+          <b>Name Here</b><small>Best Friend</small>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
