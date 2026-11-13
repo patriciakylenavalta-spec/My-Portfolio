@@ -81,7 +81,7 @@ h1 span, .highlight { color: var(--purple); }
   border: 2px dashed var(--line); border-radius: 12px; color: var(--muted);
   font-size: clamp(11px, 1.1vw, 15px);
 }
-.frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.frame img { width: 100%; height: 100%; object-fit: cover; }
 .placeholder { display: grid; place-items: center; width: 100%; height: 100%; padding: 1vw; text-align: center; color: var(--muted); }
 img[data-zoom] { cursor: zoom-in; }
 
@@ -150,10 +150,10 @@ nav a.active .ico { color: #fff; }
 .photo-wrap::before { content: ""; position: absolute; inset: -6%; border: 1px solid var(--line); border-radius: 50%; }
 .photo-ring {
   width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden;
-  border: 6px solid var(--purple); border-radius: 50%; background: #fff;
+  border: 6px solid var(--purple); border-radius: 50%; background: #1a0840;
   box-shadow: 0 0 55px var(--purple), inset 0 0 40px rgba(164, 59, 255, .5);
 }
-.photo-ring img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.photo-ring img { width: 100%; height: 100%; object-fit: cover; }
 .photo-ring .placeholder { font-family: "Orbitron", sans-serif; font-size: clamp(30px, 6vw, 80px); color: var(--purple); }
 .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #c06bff, #5a12c9); box-shadow: 0 0 20px var(--purple); animation: float 4s ease-in-out infinite; }
 .orb.o1 { width: 9%; height: 9%; top: 6%; right: 4%; }
@@ -203,317 +203,26 @@ nav a.active .ico { color: #fff; }
 .item:hover { background: rgba(164, 59, 255, .25); transform: translateX(4px); }
 
 /* ============ ACHIEVEMENTS ============ */
-
-:root {
-  --purple: #a020ff;
-  --purple-light: #c45cff;
-  --dark: #090014;
-  --card: #18082d;
-  --muted: #c4afd9;
-  --white: #ffffff;
-}
-
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  color: var(--white);
-  background:
-    radial-gradient(circle at 85% 30%, #31085c 0%, transparent 35%),
-    linear-gradient(120deg, #08000f, #140024);
-}
-
-/* MAIN PAGE */
-.achievements-page {
-  width: 100%;
-  height: 100vh;
-  padding: 2vh 2vw;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-}
-
-/* NAVIGATION */
-.navbar {
-  width: 100%;
-  min-height: 58px;
-  padding: 10px 2vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid var(--purple);
-  border-radius: 40px;
-  background: rgba(20, 5, 38, .9);
-  box-shadow: 0 0 20px rgba(160, 32, 255, .2);
-}
-
-.logo {
-  font-size: clamp(20px, 2vw, 28px);
-  font-weight: bold;
-}
-
-.logo span {
-  color: var(--purple-light);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2vw;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  font-size: clamp(10px, 1vw, 14px);
-  padding: 12px 18px;
-  border-radius: 30px;
-  transition: .3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: var(--purple);
-  box-shadow: 0 0 20px var(--purple);
-}
-
-/* PAGE TITLE */
-.page-title {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-}
-
-.page-title h1 {
-  font-size: clamp(30px, 3vw, 45px);
-  font-weight: 800;
-}
-
-.page-title h1 span {
-  color: var(--purple);
-}
-
-.page-title p {
-  color: var(--muted);
-  font-size: clamp(12px, 1.2vw, 16px);
-  margin-top: 8px;
-}
-
-/* SCHOOL TIMELINE */
-.timeline {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.6vw;
-  padding: 1vh 0 2vh;
-  flex-shrink: 0;
-}
-
+.timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; padding: 1vh 0; }
 .timeline::before {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: calc(1vh + clamp(30px, 4.5vw, 64px));
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--purple),
-    transparent
-  );
+  content: ""; position: absolute; left: 8%; right: 8%;
+  top: calc(1vh + clamp(30px, 4.5vw, 64px)); height: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
 }
-
-.school {
-  position: relative;
-  text-align: center;
-  min-width: 0;
-  z-index: 1;
-}
-
-/* CIRCULAR SCHOOL LOGOS */
+.school { position: relative; text-align: center; }
 .school-logo {
-  display: grid;
-  place-items: center;
-  width: clamp(60px, 9vw, 128px);
-  height: clamp(60px, 9vw, 128px);
-  margin: 0 auto;
-  overflow: hidden;
-  border: 3px solid var(--purple);
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 25px var(--purple);
-  flex-shrink: 0;
+  display: grid; place-items: center; width: clamp(60px, 9vw, 128px); aspect-ratio: 1;
+  margin: 0 auto; overflow: hidden; border: 3px solid var(--purple); border-radius: 50%;
+  background: #1a0840; box-shadow: 0 0 25px var(--purple);
 }
+.school-logo img { width: 100%; height: 100%; object-fit: contain; }
+.school b { display: block; margin-top: 1.2vh; font-size: clamp(12px, 1.3vw, 18px); }
+.school small { color: var(--muted); font-size: clamp(10px, 1vw, 14px); }
+.level { font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); font-size: clamp(10px, 1vw, 13px); }
 
-.school-logo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.school b {
-  display: block;
-  margin-top: 1.2vh;
-  font-size: clamp(10px, 1.2vw, 17px);
-}
-
-.school small {
-  color: var(--muted);
-  font-size: clamp(10px, 1vw, 14px);
-}
-
-.level {
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--purple-light);
-  font-size: clamp(9px, 1vw, 13px);
-}
-
-/* ACHIEVEMENT HEADING */
-.gallery-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 1vh 0 2vh;
-  font-size: clamp(18px, 1.7vw, 25px);
-  flex-shrink: 0;
-}
-
-.gallery-heading span {
-  color: var(--purple-light);
-}
-
-/* ACHIEVEMENT GALLERY */
-.gallery {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.6vw;
-}
-
-/* PICTURE CARDS */
-.slot {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 0;
-  padding: 1.2vh 1vw;
-  border: 1px solid rgba(160, 32, 255, .65);
-  border-radius: 17px;
-  background: rgba(30, 9, 52, .8);
-  box-shadow: 0 0 15px rgba(160, 32, 255, .12);
-  transition: .3s;
-}
-
-.slot:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(160, 32, 255, .4);
-  border-color: var(--purple-light);
-}
-
-/* IMPORTANT: ONLY GALLERY IMAGES */
-.gallery .slot img {
-  display: block;
-  width: 100%;
-  height: 250px;
-  max-height: 250px;
-  object-fit: contain;
-  object-position: center;
-  border: 1px dashed var(--purple);
-  border-radius: 12px;
-  background: #10051e;
-}
-
-/* EMPTY PICTURE PLACEHOLDER */
-.slot .placeholder {
-  width: 100%;
-  height: 250px;
-  display: grid;
-  place-items: center;
-  border: 1px dashed var(--purple);
-  border-radius: 12px;
-  color: var(--muted);
-  background: rgba(160, 32, 255, .04);
-}
-
-/* PICTURE CAPTION */
-.slot p {
-  margin-top: 1vh;
-  text-align: center;
-  font-size: clamp(11px, 1.1vw, 15px);
-  color: var(--white);
-}
-
-/* PURPLE BOTTOM DECORATION */
-.achievements-page::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--purple);
-  box-shadow: 0 0 15px var(--purple);
-  pointer-events: none;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .achievements-page {
-    overflow-y: auto;
-    height: auto;
-    min-height: 100vh;
-  }
-
-  .gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .timeline {
-    gap: 10px;
-  }
-
-  .nav-links {
-    gap: 5px;
-  }
-}
-
-@media (max-width: 550px) {
-  .navbar {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .timeline {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 25px;
-  }
-
-  .timeline::before {
-    display: none;
-  }
-
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-}
+.gallery { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; }
+.slot { display: flex; flex-direction: column; min-height: 0; padding: 1.2vh 1vw; }
+.slot p { margin-top: 1vh; text-align: center; font-size: clamp(11px, 1.1vw, 15px); }
 
 /* ============ FAMILY / FRIENDS ============ */
 .people { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2vw; }
