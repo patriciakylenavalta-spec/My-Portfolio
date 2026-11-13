@@ -203,26 +203,39 @@ nav a.active .ico { color: #fff; }
 .item:hover { background: rgba(164, 59, 255, .25); transform: translateX(4px); }
 
 /* ============ ACHIEVEMENTS ============ */
-.timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; padding: 1vh 0; }
-.timeline::before {
-  content: ""; position: absolute; left: 8%; right: 8%;
-  top: calc(1vh + clamp(30px, 4.5vw, 64px)); height: 2px;
-  background: linear-gradient(90deg, transparent, var(--purple), transparent);
-}
-.school { position: relative; text-align: center; }
-.school-logo {
-  display: grid; place-items: center; width: clamp(60px, 9vw, 128px); aspect-ratio: 1;
-  margin: 0 auto; overflow: hidden; border: 3px solid var(--purple); border-radius: 50%;
-  background: #fff; box-shadow: 0 0 25px var(--purple);
-}
-.school-logo img { width: 100%; height: 100%; object-fit: contain; }
-.school b { display: block; margin-top: 1.2vh; font-size: clamp(11px, 1.2vw, 17px); }
-.school small { color: var(--muted); font-size: clamp(10px, 1vw, 14px); }
-.level { font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); font-size: clamp(10px, 1vw, 13px); }
 
-.gallery { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; }
-.slot { display: flex; flex-direction: column; min-height: 0; padding: 1.2vh 1vw; }
-.slot p { margin-top: 1vh; text-align: center; font-size: clamp(11px, 1.1vw, 15px); }
+/* ACHIEVEMENT GALLERY */
+.gallery {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6vw;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1.2vh 1vw;
+}
+
+/* PICTURE FRAME SIZE */
+.slot img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+}
+
+/* PICTURE CAPTION */
+.slot p {
+  margin-top: 1vh;
+  text-align: center;
+  font-size: clamp(11px, 1.1vw, 15px);
+}
+
 
 /* ============ FAMILY / FRIENDS ============ */
 .people { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2vw; }
