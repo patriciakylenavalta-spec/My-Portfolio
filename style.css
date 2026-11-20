@@ -227,16 +227,25 @@ nav a.active .ico { color: #fff; }
 .slot p { margin-top: 1vh; text-align: center; font-size: clamp(11px, 1.1vw, 15px); }
 
 /* ===== FAMILY / FRIENDS ===== */
-#family { gap: 1.5vh; overflow: hidden; }
+/* ===== FAMILY / FRIENDS ===== */
+#family { gap: 1.2vh; overflow: hidden; }
 
+/* compact heading so the pictures get more height */
+#family h1 { font-size: clamp(20px, 2.8vw, 38px); }
+#family h1 span { color: #c084fc; text-shadow: 0 0 18px rgba(192, 132, 252, 0.6); }
+#family .subtitle { letter-spacing: 3px; text-transform: uppercase; opacity: 0.75; font-size: clamp(10px, 1vw, 14px); }
+.family-intro { max-width: 70vw; margin-top: .6vh; line-height: 1.4; color: var(--muted); font-size: clamp(11px, 1.05vw, 15px); }
+
+/* 4 big cards, wide gaps, fills the rest of the screen */
 #family .gallery {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: minmax(0, 1fr);
-  gap: 1.6vw;
-  width: min(1400px, 96%);
+  gap: 2.4vw;
+  width: 100%;
+  max-width: 1500px;
   margin: 0 auto;
   align-items: stretch;
 }
@@ -250,22 +259,20 @@ nav a.active .ico { color: #fff; }
   height: 100%;
   min-height: 0;
   overflow: hidden;
-  padding: 1.2vh 1vw 1.4vh;
-  border-radius: 16px;
+  padding: 1.4vh 1.1vw 1.6vh;
+  border-radius: 18px;
   background: linear-gradient(160deg, rgba(168, 85, 247, 0.14), rgba(20, 10, 40, 0.65));
   border: 1px solid rgba(168, 85, 247, 0.35);
-  box-shadow: 0 0 0 rgba(168, 85, 247, 0);
   text-align: center;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
-
 #family .card:hover {
   transform: translateY(-6px);
   border-color: rgba(192, 132, 252, 0.9);
   box-shadow: 0 12px 30px rgba(168, 85, 247, 0.35);
 }
 
-/* picture takes all the free height of the card, text stays below */
+/* picture: takes ALL free height, text stays at the bottom */
 #family .frame {
   position: relative;
   flex: 1;
@@ -275,7 +282,6 @@ nav a.active .ico { color: #fff; }
   border-radius: 12px;
   overflow: hidden;
 }
-
 #family .frame img {
   position: absolute;
   inset: 0;
@@ -286,12 +292,8 @@ nav a.active .ico { color: #fff; }
   object-position: center top;
   transition: transform .5s ease;
 }
-
 #family .card:hover .frame img { transform: scale(1.04); }
-
-/* placeholder text if the picture is missing */
 #family .frame .placeholder { position: absolute; inset: 0; }
-
 #family .frame::after {
   content: "";
   position: absolute;
@@ -308,13 +310,13 @@ nav a.active .ico { color: #fff; }
   width: 18px;
   height: 18px;
   border: 2px solid #c084fc;
-  opacity: 0.8;
+  opacity: .8;
   pointer-events: none;
 }
-#family .card::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; border-top-left-radius: 16px; }
-#family .card::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: 16px; }
+#family .card::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; border-top-left-radius: 18px; }
+#family .card::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: 18px; }
 
-/* caption + text below the picture */
+/* text below the picture */
 #family .card p {
   flex: none;
   margin: 1.2vh 0 0;
@@ -329,56 +331,21 @@ nav a.active .ico { color: #fff; }
   display: block;
   width: 28px;
   height: 2px;
-  margin: .8vh auto 0;
+  margin: .7vh auto 0;
   background: #c084fc;
   border-radius: 2px;
-  transition: width 0.35s ease;
+  transition: width .35s ease;
 }
 #family .card:hover p::after { width: 60px; }
 
 #family .desc {
   flex: none;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-top: .8vh;
-  font-size: clamp(10px, .95vw, 14px);
-  line-height: 1.4;
+  margin-top: .7vh;
+  font-size: clamp(10px, .9vw, 13px);
+  line-height: 1.35;
   color: var(--muted);
-}
-
-.family-intro { max-width: 55vw; margin-top: 1vh; line-height: 1.55; color: var(--muted); font-size: clamp(11px, 1.2vw, 16px); }
-
-#family h1 span { color: #c084fc; text-shadow: 0 0 18px rgba(192, 132, 252, 0.6); }
-#family .subtitle { letter-spacing: 3px; text-transform: uppercase; opacity: 0.75; }
-
-/* ============ LIGHTBOX ============ */
-.lightbox { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; background: rgba(7, 2, 15, .93); cursor: zoom-out; }
-.lightbox.open { display: grid; }
-.lightbox img { max-width: 90vw; max-height: 90vh; border: 2px solid var(--purple); border-radius: 12px; box-shadow: 0 0 40px var(--purple); }
-.lightbox button { position: absolute; top: 3vh; right: 3vw; width: 44px; height: 44px; border: 1px solid var(--purple); border-radius: 50%; background: transparent; color: #fff; font-size: 26px; cursor: pointer; }
-
-/* ============ SMALL SCREENS (no scrolling) ============ */
-@media (max-width: 800px) {
-  html, body { overflow: hidden; height: 100%; }
-  nav { flex-direction: column; gap: 1vh; border-radius: 24px; }
-  nav ul { flex-wrap: wrap; justify-content: center; }
-  .page.home.active { flex-direction: column; }
-  .photo-wrap { height: 40vh; }
-  .code-window { display: none; }
-  .about p { max-width: 100%; }
-  .timeline, .people, .columns, .profile { grid-template-columns: 1fr; }
-  .timeline::before { display: none; }
-
-  #family .gallery {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: 1.2vh 3vw;
-    width: 100%;
-  }
-  #family .card { height: 100%; }
-  #family .frame { flex: 1; height: auto; min-height: 0; }
-  #family .family-intro { display: none; }
-  #family .desc { -webkit-line-clamp: 2; font-size: 10px; }
 }
