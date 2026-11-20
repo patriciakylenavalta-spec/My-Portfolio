@@ -1,4 +1,4 @@
- * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --bg: #07020f;
@@ -147,14 +147,15 @@ nav a.active .ico { color: #fff; }
 .socials a .ico { margin: 0; color: #fff; }
 .socials a:hover { background: var(--purple); box-shadow: 0 0 20px var(--purple); }
 
-.photo-wrap { position: relative; width: min(42vw, 66vh); aspect-ratio: 1; }
-.photo-wrap::before { content: ""; position: absolute; inset: -6%; border: 1px solid var(--line); border-radius: 50%; }
+/* Home photo: full body, head to toe */
+.photo-wrap { position: relative; height: min(78vh, 720px); aspect-ratio: 1086 / 1448; }
+.photo-wrap::before { content: ""; position: absolute; inset: -3%; border: 1px solid var(--line); border-radius: 30px; }
 .photo-ring {
-  width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden;
-  border: 6px solid var(--purple); border-radius: 50%; background: #1a0840;
-  box-shadow: 0 0 55px var(--purple), inset 0 0 40px rgba(164, 59, 255, .5);
+  width: 100%; height: 100%; overflow: hidden;
+  border: 4px solid var(--purple); border-radius: 24px; background: #1a0840;
+  box-shadow: 0 0 45px var(--purple), inset 0 0 40px rgba(164, 59, 255, .4);
 }
-.photo-ring img { width: 100%; height: 100%; object-fit: cover; }
+.photo-ring img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .photo-ring .placeholder { font-family: "Orbitron", sans-serif; font-size: clamp(30px, 6vw, 80px); color: var(--purple); }
 .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #c06bff, #5a12c9); box-shadow: 0 0 20px var(--purple); animation: float 4s ease-in-out infinite; }
 .orb.o1 { width: 9%; height: 9%; top: 6%; right: 4%; }
@@ -225,9 +226,8 @@ nav a.active .ico { color: #fff; }
 .slot { display: flex; flex-direction: column; min-height: 0; padding: 1.2vh 1vw; }
 .slot p { margin-top: 1vh; text-align: center; font-size: clamp(11px, 1.1vw, 15px); }
 
-
 /* ===== FAMILY / FRIENDS ===== */
-#family { gap: 1.5vh; }
+#family { gap: 1.5vh; overflow: hidden; }
 
 #family .gallery {
   flex: 1;
@@ -249,6 +249,7 @@ nav a.active .ico { color: #fff; }
   max-width: none;
   height: 100%;
   min-height: 0;
+  overflow: hidden;
   padding: 1.2vh 1vw 1.4vh;
   border-radius: 16px;
   background: linear-gradient(160deg, rgba(168, 85, 247, 0.14), rgba(20, 10, 40, 0.65));
@@ -337,7 +338,10 @@ nav a.active .ico { color: #fff; }
 
 #family .desc {
   flex: none;
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin-top: .8vh;
   font-size: clamp(10px, .95vw, 14px);
   line-height: 1.4;
@@ -349,9 +353,32 @@ nav a.active .ico { color: #fff; }
 #family h1 span { color: #c084fc; text-shadow: 0 0 18px rgba(192, 132, 252, 0.6); }
 #family .subtitle { letter-spacing: 3px; text-transform: uppercase; opacity: 0.75; }
 
-/* mobile: 2x2 and scrolling allowed */
+/* ============ LIGHTBOX ============ */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: none; place-items: center; background: rgba(7, 2, 15, .93); cursor: zoom-out; }
+.lightbox.open { display: grid; }
+.lightbox img { max-width: 90vw; max-height: 90vh; border: 2px solid var(--purple); border-radius: 12px; box-shadow: 0 0 40px var(--purple); }
+.lightbox button { position: absolute; top: 3vh; right: 3vw; width: 44px; height: 44px; border: 1px solid var(--purple); border-radius: 50%; background: transparent; color: #fff; font-size: 26px; cursor: pointer; }
+
+/* ============ SMALL SCREENS (no scrolling) ============ */
 @media (max-width: 800px) {
-  #family .gallery { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; gap: 14px; }
-  #family .card { height: auto; }
-  #family .frame { flex: none; height: 30vh; }
+  html, body { overflow: hidden; height: 100%; }
+  nav { flex-direction: column; gap: 1vh; border-radius: 24px; }
+  nav ul { flex-wrap: wrap; justify-content: center; }
+  .page.home.active { flex-direction: column; }
+  .photo-wrap { height: 40vh; }
+  .code-window { display: none; }
+  .about p { max-width: 100%; }
+  .timeline, .people, .columns, .profile { grid-template-columns: 1fr; }
+  .timeline::before { display: none; }
+
+  #family .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1.2vh 3vw;
+    width: 100%;
+  }
+  #family .card { height: 100%; }
+  #family .frame { flex: 1; height: auto; min-height: 0; }
+  #family .family-intro { display: none; }
+  #family .desc { -webkit-line-clamp: 2; font-size: 10px; }
 }
