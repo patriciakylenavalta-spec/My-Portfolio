@@ -227,7 +227,6 @@ nav a.active .ico { color: #fff; }
 .slot p { margin-top: 1vh; text-align: center; font-size: clamp(11px, 1.1vw, 15px); }
 
 /* ===== FAMILY / FRIENDS ===== */
-/* ===== FAMILY / FRIENDS ===== */
 #family { gap: 1.2vh; overflow: hidden; }
 
 /* compact heading so the pictures get more height */
@@ -348,4 +347,51 @@ nav a.active .ico { color: #fff; }
   font-size: clamp(10px, .9vw, 13px);
   line-height: 1.35;
   color: var(--muted);
+}
+/* ============ ZOOM VIEWER ============ */
+.lightbox { display: none !important; }   /* old lightbox off */
+
+.zoom-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: none; place-items: center;
+  background: rgba(7, 2, 15, .94);
+  cursor: zoom-out;
+}
+.zoom-overlay.open { display: grid; }
+.zoom-overlay img {
+  max-width: 92vw; max-height: 92vh;
+  width: auto; height: auto; object-fit: contain;
+  border: 2px solid var(--purple); border-radius: 12px;
+  box-shadow: 0 0 40px var(--purple);
+}
+.zoom-close {
+  position: absolute; top: 3vh; right: 3vw;
+  width: 46px; height: 46px;
+  border: 1px solid var(--purple); border-radius: 50%;
+  background: rgba(20, 6, 45, .8); color: #fff;
+  font-size: 28px; line-height: 1; cursor: pointer;
+}
+.zoom-close:hover { background: var(--purple); }
+
+/* ============ SMALL SCREENS (no scrolling) ============ */
+@media (max-width: 800px) {
+  html, body { overflow: hidden; height: 100%; }
+  nav { flex-direction: column; gap: 1vh; border-radius: 24px; }
+  nav ul { flex-wrap: wrap; justify-content: center; }
+  .page.home.active { flex-direction: column; }
+  .photo-wrap { height: 40vh; }
+  .code-window { display: none; }
+  .about p { max-width: 100%; }
+  .timeline, .people, .columns, .profile { grid-template-columns: 1fr; }
+  .timeline::before { display: none; }
+
+  #family .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1.2vh 3vw;
+    width: 100%;
+  }
+  #family .card { height: 100%; }
+  #family .family-intro { display: none; }
+  #family .desc { -webkit-line-clamp: 2; font-size: 10px; }
 }
