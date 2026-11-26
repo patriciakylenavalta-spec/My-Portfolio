@@ -55,7 +55,12 @@
     </section>
 
     <!-- ================= PERSONAL INFORMATION ================= -->
-    <section class="page" id="personal">
+    <section class="page" id="info">
+
+    <!-- scrollable inside the page: Personal Information, then Achievements -->
+    <div class="info-scroll">
+
+    <section class="info-block" id="personal">
 
       <div class="pi-head">
         <span class="pi-tag">01 · About Me</span>
@@ -171,8 +176,8 @@
     </section>
 
     <!-- ================= ACHIEVEMENTS ================= -->
-    <section class="page" id="achievements">
-      <div>
+    <section class="info-block" id="achievements">
+      <div class="page-head">
         <h1>My <span>Achievements</span></h1>
         <div class="subtitle">My journey from elementary to college</div>
       </div>
@@ -227,9 +232,19 @@
       </div>
     </section>
 
+    </div><!-- /info-scroll -->
+
+    <!-- side dots: jump between Personal Information and Achievements -->
+    <div class="info-dots" aria-label="Sections">
+      <a href="#personal" title="Personal Information" data-section="personal"></a>
+      <a href="#achievements" title="Achievements" data-section="achievements"></a>
+    </div>
+
+    </section>
+
     <!-- ================= FAMILY / FRIENDS ================= -->
     <section class="page" id="family">
-      <div>
+      <div class="page-head">
         <h1>Family <span>&amp; Friends</span></h1>
         <div class="subtitle">The people who matter</div>
         <p class="family-intro"></p>
