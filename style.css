@@ -175,6 +175,12 @@ nav a.active .ico { color: #fff; }
   opacity: .8;
 }
 
+.pi-intro {
+  max-width: 62vw; margin-top: .6vh;
+  line-height: 1.5; color: var(--muted);
+  font-size: clamp(10px, 1vw, 14px);
+}
+
 /* 4 info columns: fills the free height, no page scroll */
 .pi-grid {
   flex: 1;
@@ -505,9 +511,9 @@ nav a.active .ico { color: #fff; }
 @keyframes fadeOnly { from { opacity: 0; } to { opacity: 1; } }
 
 /* ============ SMALL SCREENS ============ */
-@media (max-width: 900px) {
-  html, body { overflow: hidden; height: 200%; }
-  nav { flex-direction: column; gap: 1vh; border-radius: 34px; }
+@media (max-width: 800px) {
+  html, body { overflow: hidden; height: 100%; }
+  nav { flex-direction: column; gap: 1vh; border-radius: 24px; }
   nav ul { flex-wrap: wrap; justify-content: center; }
   .page.home.active { flex-direction: column; }
   .photo-wrap { height: 40vh; }
@@ -530,7 +536,7 @@ nav a.active .ico { color: #fff; }
   }
   #family .card { height: 100%; }
   #family .family-intro { display: none; }
-  #family .desc { -webkit-line-clamp: 2; font-size: 20px; }
+  #family .desc { -webkit-line-clamp: 2; font-size: 10px; }
 }
 
 /* respect people who turn animations off */
