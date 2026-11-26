@@ -33,9 +33,10 @@ const ICONS = {
 
 /* ============ MGA PAGE (dito mo babaguhin ang tabs) ============ */
 const PAGES = [
-  { id: "home",   label: "Home",                        icon: "home" },
-  { id: "info",   label: "Personal Info & Achievements", icon: "user" },
-  { id: "family", label: "Family / Friends",            icon: "family" },
+  { id: "home",         label: "Home",                 icon: "home" },
+  { id: "personal",     label: "Personal Information", icon: "user" },
+  { id: "achievements", label: "Achievements",         icon: "trophy" },
+  { id: "family",       label: "Family / Friends",     icon: "family" },
 ];
 
 /* ============ 1. NAVBAR ============ */
@@ -52,20 +53,14 @@ function renderNavbar() {
 const WIPE_SWAP_MS = 430;   // kailan papalitan ang page (kapag takpan na ng wipe ang screen)
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* #personal at #achievements ay parehong nasa loob ng "info" page */
-const SECTION_TO_PAGE = { personal: "info", achievements: "info" };
-
 let currentPage = null;     // page na naka-display ngayon
 let busy = false;           // may transition na tumatakbo
 let queued = null;          // kapag nag-click habang may transition, ito ang susunod
 let wipeEl = null;
-let scroller = null;        // ang scrollable na loob ng info page
 
 function parseHash() {
-  const h = location.hash.slice(1);
-  if (PAGES.some(p => p.id === h)) return { page: h, section: null };
-  if (SECTION_TO_PAGE[h])          return { page: SECTION_TO_PAGE[h], section: h };
-  return { page: "home", section: null };
+  const id = location.hash.slice(1);
+  return PAGES.some(p => p.id === id) ? id : "home";
 }
 
 function setupWipe() {
@@ -75,62 +70,23 @@ function setupWipe() {
   document.body.appendChild(wipeEl);
 }
 
-/* scroll sa loob ng info page: Personal Information <-> Achievements */
-function scrollToSection(id, smooth) {
-  if (!scroller) return;
-  const el = id ? document.getElementById(id) : null;
-  scroller.scrollTo({ top: el ? el.offsetTop : 0, behavior: smooth ? "smooth" : "auto" });
-}
-
-function updateDots() {
-  if (!scroller) return;
-  const second = document.getElementById("achievements");
-  const active = scroller.scrollTop >= second.offsetTop / 2 ? "achievements" : "personal";
-  document.querySelectorAll(".info-dots a").forEach(a =>
-    a.classList.toggle("active", a.dataset.section === active));
-}
-
-function setupInfoDots() {
-  scroller = document.querySelector(".info-scroll");
-  if (!scroller) return;
-  scroller.addEventListener("scroll", updateDots, { passive: true });
-  document.querySelectorAll(".info-dots a").forEach(a => {
-    a.addEventListener("click", e => {
-      e.preventDefault();
-      scrollToSection(a.dataset.section, true);
-      history.replaceState(null, "", "#" + a.dataset.section);
-    });
-  });
-}
-
 /* ipakita agad ang page (walang effect) */
-function applyPage(t) {
-  currentPage = t.page;
-  document.querySelectorAll(".page").forEach(s => s.classList.toggle("active", s.id === t.page));
-  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.dataset.page === t.page));
-  if (t.page === "home" && typer) typer.restart();
-  if (t.page === "info") {
-    scroller.style.scrollBehavior = "auto";
-    scrollToSection(t.section, false);
-    scroller.style.scrollBehavior = "";
-    updateDots();
-  }
+function applyPage(id) {
+  currentPage = id;
+  document.querySelectorAll(".page").forEach(s => s.classList.toggle("active", s.id === id));
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.dataset.page === id));
+  if (id === "home" && typer) typer.restart();   // laging kita ang "coding" pagbalik sa Home
 }
 
 /* lumipat ng page, may wipe effect */
-function goTo(t, animate = true) {
-  if (busy) { queued = t; return; }
+function goTo(id, animate = true) {
+  if (busy) { queued = id; return; }
+  if (id === currentPage) return;
 
-  /* nasa info page na: scroll lang sa kabilang section, walang wipe */
-  if (t.page === currentPage) {
-    if (t.page === "info") scrollToSection(t.section, true);
-    return;
-  }
-
-  if (!animate || reduceMotion) { applyPage(t); return; }
+  if (!animate || reduceMotion) { applyPage(id); return; }
 
   busy = true;
-  const info = PAGES.find(p => p.id === t.page);
+  const info = PAGES.find(p => p.id === id);
   const label = wipeEl.querySelector("span");
   label.innerHTML = `<span class="ico">${ICONS[info.icon]}</span>${info.label}`;
 
@@ -138,7 +94,7 @@ function goTo(t, animate = true) {
   void wipeEl.offsetWidth;                 // i-restart ang animation
   wipeEl.classList.add("run");
 
-  setTimeout(() => applyPage(t), WIPE_SWAP_MS);
+  setTimeout(() => applyPage(id), WIPE_SWAP_MS);
 
   wipeEl.addEventListener("animationend", function done(e) {
     if (e.target !== wipeEl) return;       // hintayin ang mismong wipe, hindi ang text
@@ -238,7 +194,7 @@ function setupZoom() {
 function setupKeyboardNav() {
   document.addEventListener("keydown", e => {
     if (zoomOverlay && zoomOverlay.classList.contains("open")) return;
-    const index = PAGES.findIndex(p => p.id === ((queued && queued.page) || currentPage));
+    const index = PAGES.findIndex(p => p.id === (queued || currentPage));
     if (index === -1) return;
     if (e.key === "ArrowRight" && index < PAGES.length - 1) location.hash = PAGES[index + 1].id;
     if (e.key === "ArrowLeft" && index > 0) location.hash = PAGES[index - 1].id;
@@ -254,7 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupImageFallbacks();
   setupZoom();
   setupKeyboardNav();
-  setupInfoDots();
 
   typer = createTyper(document.getElementById("typed"), ["coding", "designing", "learning", "creating"]);
 
