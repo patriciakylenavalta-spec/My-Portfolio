@@ -84,31 +84,55 @@ h1 span, .highlight { color: var(--purple); }
 .placeholder { display: grid; place-items: center; width: 100%; height: 100%; padding: 1vw; text-align: center; color: var(--muted); }
 img[data-zoom] { cursor: zoom-in; }
 
-/* ============ NAVBAR ============ */
+/* ============ NAVBAR (centered pill, 3 links only) ============ */
 nav {
   position: relative; z-index: 2; flex: none;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1vh 2vw;
-  border: 1px solid var(--line); border-radius: 60px;
-  background: rgba(20, 6, 45, .65);
-  box-shadow: 0 0 25px rgba(164, 59, 255, .3);
+  align-self: center;
+  width: fit-content;
+  display: flex; align-items: center; justify-content: center;
+  padding: .6vh .5vw;
+  border: 1px solid rgba(164, 59, 255, .35);
+  border-radius: 999px;
+  background: rgba(20, 6, 45, .6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .35), 0 0 18px rgba(164, 59, 255, .18);
 }
-.logo { display: flex; align-items: center; gap: .6vw; font-family: "Orbitron", sans-serif; font-weight: 700; font-size: clamp(16px, 2vw, 26px); }
-.logo-icon { color: var(--purple); display: inline-flex; }
-.logo-icon svg { width: 1.4em; height: 1.4em; }
-.dot { color: var(--purple); }
 
-nav ul { display: flex; gap: .6vw; list-style: none; }
+/* walang icons sa nav links */
+nav a .ico { display: none; }
+
+nav ul { display: flex; gap: .3vw; list-style: none; }
 nav a {
-  display: flex; align-items: center; gap: .5em;
-  padding: 1.2vh 1.4vw; border-radius: 40px;
-  color: var(--text); text-decoration: none; text-transform: uppercase;
-  font-size: clamp(10px, .95vw, 14px); transition: .25s;
+  display: flex; align-items: center;
+  padding: 1vh 1.5vw; border-radius: 999px;
+  color: var(--muted); text-decoration: none;
+  text-transform: none;
+  font-size: clamp(11px, .95vw, 14px);
+  font-weight: 400;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
 }
-nav a .ico { color: var(--purple); }
-nav a:hover { color: var(--purple); }
-nav a.active { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); box-shadow: 0 0 22px var(--purple); color: #fff; }
-nav a.active .ico { color: #fff; }
+
+/* HOVER = ang may highlight na pill */
+nav a:hover {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(164, 59, 255, .85), rgba(122, 31, 255, .85));
+  box-shadow: 0 0 16px rgba(164, 59, 255, .55);
+}
+
+/* ITAGO ang page na kinaroroonan mo, kaya 3 na lang ang makikita */
+nav a.active { display: none; }
+nav li:has(> a.active) { display: none; }
+
+/* maliit na pop-in ng mga link tuwing nagbabago ang page */
+nav.swap a { animation: navIn .4s cubic-bezier(.2, .8, .2, 1) backwards; }
+nav.swap li:nth-child(2) a { animation-delay: .05s; }
+nav.swap li:nth-child(3) a { animation-delay: .1s; }
+nav.swap li:nth-child(4) a { animation-delay: .15s; }
+@keyframes navIn {
+  from { opacity: 0; transform: translateY(-6px) scale(.94); }
+  to   { opacity: 1; transform: none; }
+}
 
 /* ============ HOME ============ */
 .home .left { flex: 1.2; }
@@ -523,8 +547,9 @@ nav a.active .ico { color: #fff; }
 /* ============ SMALL SCREENS ============ */
 @media (max-width: 800px) {
   html, body { overflow: hidden; height: 100%; }
-  nav { flex-direction: column; gap: 1vh; border-radius: 24px; }
-  nav ul { flex-wrap: wrap; justify-content: center; }
+  nav { width: 100%; border-radius: 24px; padding: .8vh 2vw; }
+  nav ul { flex-wrap: wrap; justify-content: center; gap: 1vw; }
+  nav a { padding: .9vh 3vw; font-size: 12px; }
   .page.home.active { flex-direction: column; }
   .photo-wrap { height: 40vh; }
   .timeline { grid-template-columns: 1fr; }
@@ -553,5 +578,6 @@ nav a.active .ico { color: #fff; }
 /* respect people who turn animations off */
 @media (prefers-reduced-motion: reduce) {
   .page-wipe { display: none; }
+  nav.swap a { animation: none; }
   .page.active *, .page.active { animation: none !important; }
 }
