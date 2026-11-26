@@ -1,218 +1,583 @@
-/* ============ ICONS (inline SVG, walang kailangang i-download) ============ */
-const I = (d) =>
-  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-const ICONS = {
-  home:    I('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>'),
-  user:    I('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/>'),
-  trophy:  I('<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/>'),
-  family:  I('<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6M15 14.5c3 0 6 1.5 6 5.5"/>'),
-  code:    I('<path d="M8 6l-6 6 6 6M16 6l6 6-6 6M14 4l-4 16"/>'),
-  laptop:  I('<rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 20h20"/>'),
-  heart:   I('<path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 5.5-8 11-8 11z"/>'),
-  arrow:   I('<path d="M5 12h14M13 6l6 6-6 6"/>'),
-  star:    I('<path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1 6.2L12 17.3l-5.5 3 1-6.2L3 9.7l6.2-.9z"/>'),
-  globe:   I('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'),
-  palette: I('<path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a4 4 0 0 0 4-4c0-5-4-10-9-10z"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="7" r="1"/><circle cx="16" cy="10" r="1"/>'),
-  gear:    I('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>'),
-  pencil:  I('<path d="M4 20l4-1 11-11-3-3L5 16z"/>'),
-  play:    I('<path d="M7 4l13 8-13 8z"/>'),
-  chef:    I('<path d="M7 14a4 4 0 1 1 2-7 4 4 0 0 1 6 0 4 4 0 1 1 2 7v6H7z"/>'),
-  broom:   I('<path d="M14 3l7 7M13 8l-9 9 3 3 9-9M6 15l3 3"/>'),
-  bulb:    I('<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3 11c1 1 1 2 1 3h4c0-1 0-2 1-3a6 6 0 0 0-3-11z"/>'),
-  target:  I('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/>'),
-  chat:    I('<path d="M4 5h16v11H9l-5 4z"/>'),
-  clock:   I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
-  cap:     I('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 3 9 3 12 0v-5"/>'),
-  cake:    I('<path d="M4 20h16v-7H4zM4 16c3 2 5-2 8 0s5-2 8 0M12 9V6M12 3v1"/>'),
-  book:    I('<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>'),
-  fb:      I('<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>'),
-  ig:      I('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>'),
-  github:  I('<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.1-.3 6.4-1.5 6.4-7a5.4 5.4 0 0 0-1.5-3.7 5 5 0 0 0-.1-3.7s-1.2-.4-3.9 1.4a13.4 13.4 0 0 0-7 0C6.2 2.8 5 3.2 5 3.2a5 5 0 0 0-.1 3.7 5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-1 2.6V22"/>'),
-};
-
-/* ============ MGA PAGE (dito mo babaguhin ang tabs) ============ */
-const PAGES = [
-  { id: "home",         label: "Home",                 icon: "home" },
-  { id: "personal",     label: "Personal Information", icon: "user" },
-  { id: "achievements", label: "Achievements",         icon: "trophy" },
-  { id: "family",       label: "Family / Friends",     icon: "family" },
-];
-
-/* ============ 1. NAVBAR ============ */
-function renderNavbar() {
-  document.getElementById("navbar").innerHTML = `
-    <div class="logo"><span class="logo-icon">${ICONS.code}</span>Patricia<span class="dot">.</span></div>
-    <ul>${PAGES.map(p => `
-      <li><a href="#${p.id}" data-page="${p.id}">
-        <span class="ico">${ICONS[p.icon]}</span>${p.label}</a></li>`).join("")}
-    </ul>`;
+:root {
+  --bg: #07020f;
+  --purple: #a43bff;
+  --purple-dark: #7a1fff;
+  --card: rgba(40, 12, 80, 0.4);
+  --line: rgba(164, 59, 255, 0.5);
+  --text: #f3eaff;
+  --muted: #c9b8e6;
 }
 
-/* ============ 2. PAGE SWITCHER + WIPE EFFECT ============ */
-const WIPE_SWAP_MS = 430;   // kailan papalitan ang page (kapag takpan na ng wipe ang screen)
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+html, body { height: 100%; overflow: hidden; }   /* NO SCROLL */
 
-let currentPage = null;     // page na naka-display ngayon
-let busy = false;           // may transition na tumatakbo
-let queued = null;          // kapag nag-click habang may transition, ito ang susunod
-let wipeEl = null;
-
-function parseHash() {
-  const id = location.hash.slice(1);
-  return PAGES.some(p => p.id === id) ? id : "home";
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 2.5vh 3vw 6vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 85% 30%, #2d0b66 0, transparent 45%),
+    radial-gradient(circle at 5% 95%, #1d0645 0, transparent 40%),
+    var(--bg);
 }
 
-function setupWipe() {
-  wipeEl = document.createElement("div");
-  wipeEl.className = "page-wipe";
-  wipeEl.innerHTML = "<span></span>";
-  document.body.appendChild(wipeEl);
+main { position: relative; z-index: 1; flex: 1; min-height: 0; display: flex; }
+
+/* Pages: only the active one is shown */
+.page { display: none; flex: 1; min-height: 0; flex-direction: column; gap: 2vh; }
+.page.active { display: flex; }
+.page.home.active { flex-direction: row; align-items: center; justify-content: space-between; gap: 3vw; }
+
+h1 { font-family: "Orbitron", sans-serif; font-size: clamp(22px, 3.4vw, 46px); }
+h2 { font-family: "Orbitron", sans-serif; font-size: clamp(14px, 1.8vw, 24px); display: flex; align-items: center; }
+h1 span, .highlight { color: var(--purple); }
+.subtitle { margin-top: .5vh; color: var(--muted); font-size: clamp(11px, 1.2vw, 16px); }
+
+/* ============ ICONS ============ */
+.ico { display: inline-flex; }
+.ico svg { width: 1.2em; height: 1.2em; }
+[data-icon] > .ico { margin-right: .6em; color: var(--purple); }
+
+/* ============ BACKGROUND DECOR ============ */
+.wave { position: fixed; left: 0; bottom: 0; width: 100%; height: 12vh; z-index: 0; pointer-events: none; }
+.dots {
+  position: fixed; width: 7vw; height: 7vw; z-index: 0; pointer-events: none; opacity: .6;
+  background-image: radial-gradient(var(--purple) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+.dots-tl { top: 12vh; left: 1vw; }
+.dots-br { bottom: 14vh; right: 1.5vw; }
+
+/* ============ COMPONENTS ============ */
+.card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 22px rgba(164, 59, 255, .2), inset 0 0 30px rgba(122, 31, 255, .08);
 }
 
-/* ipakita agad ang page (walang effect) */
-function applyPage(id) {
-  currentPage = id;
-  document.querySelectorAll(".page").forEach(s => s.classList.toggle("active", s.id === id));
-  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.dataset.page === id));
-  if (id === "home" && typer) typer.restart();   // laging kita ang "coding" pagbalik sa Home
+.btn {
+  display: inline-flex; align-items: center; gap: .6em;
+  margin-right: 1vw; padding: 1.4vh 2.2vw;
+  border: 1px solid var(--purple); border-radius: 40px;
+  color: #fff; text-decoration: none;
+  font-size: clamp(11px, 1.1vw, 15px); transition: .25s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px var(--purple); }
+.btn.fill { background: linear-gradient(135deg, var(--purple), var(--purple-dark)); box-shadow: 0 0 20px var(--purple); }
+.btn [data-icon] > .ico, .btn .ico { margin: 0; color: #fff; }
+
+.frame {
+  flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden;
+  border: 2px dashed var(--line); border-radius: 12px; color: var(--muted);
+  font-size: clamp(11px, 1.1vw, 15px);
+}
+.frame img { width: 100%; height: 100%; object-fit: cover; }
+/* Achievement pictures: kita ang buong picture, hindi putol */
+.slot .frame img { object-fit: contain; }
+.placeholder { display: grid; place-items: center; width: 100%; height: 100%; padding: 1vw; text-align: center; color: var(--muted); }
+img[data-zoom] { cursor: zoom-in; }
+
+/* ============ NAVBAR (centered pill, 3 links only) ============ */
+nav {
+  position: relative; z-index: 2; flex: none;
+  align-self: center;
+  width: fit-content;
+  display: flex; align-items: center; justify-content: center;
+  padding: .6vh .5vw;
+  border: 1px solid rgba(164, 59, 255, .35);
+  border-radius: 999px;
+  background: rgba(20, 6, 45, .6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .35), 0 0 18px rgba(164, 59, 255, .18);
 }
 
-/* lumipat ng page, may wipe effect */
-function goTo(id, animate = true) {
-  if (busy) { queued = id; return; }
-  if (id === currentPage) return;
+/* walang icons sa nav links */
+nav a .ico { display: none; }
 
-  if (!animate || reduceMotion) { applyPage(id); return; }
-
-  busy = true;
-  const info = PAGES.find(p => p.id === id);
-  const label = wipeEl.querySelector("span");
-  label.innerHTML = `<span class="ico">${ICONS[info.icon]}</span>${info.label}`;
-
-  wipeEl.classList.remove("run");
-  void wipeEl.offsetWidth;                 // i-restart ang animation
-  wipeEl.classList.add("run");
-
-  setTimeout(() => applyPage(id), WIPE_SWAP_MS);
-
-  wipeEl.addEventListener("animationend", function done(e) {
-    if (e.target !== wipeEl) return;       // hintayin ang mismong wipe, hindi ang text
-    wipeEl.removeEventListener("animationend", done);
-    wipeEl.classList.remove("run");
-    busy = false;
-    if (queued) { const next = queued; queued = null; goTo(next, true); }
-  });
+nav ul { display: flex; gap: .3vw; list-style: none; }
+nav a {
+  display: flex; align-items: center;
+  padding: 1vh 1.5vw; border-radius: 999px;
+  color: var(--muted); text-decoration: none;
+  text-transform: none;
+  font-size: clamp(11px, .95vw, 14px);
+  font-weight: 400;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
 }
 
-/* ============ 3. DECORATIONS (wave + dots) ============ */
-function renderDecor() {
-  document.body.insertAdjacentHTML("beforeend", `
-    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#7a1fff" stop-opacity=".55"/>
-        <stop offset="1" stop-color="#07020f" stop-opacity="0"/>
-      </linearGradient></defs>
-      <path d="M0 80 C240 20 480 120 720 70 C960 20 1200 110 1440 40 L1440 120 L0 120Z" fill="url(#g)"/>
-      <path d="M0 80 C240 20 480 120 720 70 C960 20 1200 110 1440 40" fill="none" stroke="#a43bff" stroke-width="2"/>
-    </svg>
-    <div class="dots dots-tl"></div><div class="dots dots-br"></div>`);
+/* HOVER = ang may highlight na pill */
+nav a:hover {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(164, 59, 255, .85), rgba(122, 31, 255, .85));
+  box-shadow: 0 0 16px rgba(164, 59, 255, .55);
 }
 
-/* ============ 4. ICONS SA LOOB NG PAGE (data-icon="name") ============ */
-function fillIcons() {
-  document.querySelectorAll("[data-icon]").forEach(el => {
-    el.insertAdjacentHTML("afterbegin", `<span class="ico">${ICONS[el.dataset.icon] || ""}</span>`);
-  });
+/* ITAGO ang page na kinaroroonan mo, kaya 3 na lang ang makikita */
+nav a.active { display: none; }
+nav li:has(> a.active) { display: none; }
+
+/* maliit na pop-in ng mga link tuwing nagbabago ang page */
+nav.swap a { animation: navIn .4s cubic-bezier(.2, .8, .2, 1) backwards; }
+nav.swap li:nth-child(2) a { animation-delay: .05s; }
+nav.swap li:nth-child(3) a { animation-delay: .1s; }
+nav.swap li:nth-child(4) a { animation-delay: .15s; }
+@keyframes navIn {
+  from { opacity: 0; transform: translateY(-6px) scale(.94); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* ============ 5. TYPING EFFECT ============ */
-/* restart() = ibabalik sa buong "coding" tuwing lalabas ulit ang Home */
-function createTyper(el, words, speed = 110, del = 60, pause = 1400) {
-  let w = 0, c = 0, deleting = false, timer = null;
+/* ============ HOME ============ */
+.home .left { flex: 1.2; }
+.home .right { flex: 1; display: grid; place-items: center; }
 
-  function tick() {
-    c += deleting ? -1 : 1;
-    el.textContent = words[w].slice(0, c);
-    let delay = deleting ? del : speed;
-    if (!deleting && c === words[w].length) { deleting = true; delay = pause; }
-    else if (deleting && c === 0) { deleting = false; w = (w + 1) % words.length; delay = 400; }
-    timer = setTimeout(tick, delay);
+.welcome-tag { display: inline-flex; align-items: center; gap: .6em; margin-bottom: 2vh; padding: .6vh 1.4vw; border-radius: 30px; font-size: clamp(11px, 1.1vw, 15px); }
+.welcome-tag::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+
+.greeting { font-family: "Orbitron", sans-serif; font-size: clamp(22px, 3.6vw, 50px); }
+.fullname {
+  position: relative; display: inline-block; margin-bottom: 2.5vh;
+  font-family: "Orbitron", sans-serif; font-weight: 700; font-size: clamp(24px, 4vw, 56px);
+  color: var(--purple); text-shadow: 0 0 25px rgba(164, 59, 255, .6);
+}
+.fullname::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1vh; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--purple), transparent); }
+
+.intro { max-width: 34em; margin-bottom: 3vh; line-height: 1.6; color: var(--muted); font-size: clamp(12px, 1.25vw, 17px); }
+.love { display: block; margin-bottom: .5vh; color: var(--text); font-size: clamp(14px, 1.6vw, 22px); }
+.cursor { color: var(--purple); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.stats { display: flex; gap: 1.5vw; margin-bottom: 3vh; }
+.stat { display: flex; flex-direction: column; align-items: center; padding: 1.5vh 2vw; text-align: center; font-size: clamp(11px, 1vw, 14px); }
+.stat > .ico { margin: 0 0 .3em; color: var(--purple); }
+.stat > .ico svg { width: 1.8em; height: 1.8em; }
+.stat b { font-family: "Orbitron", sans-serif; font-size: clamp(18px, 2.4vw, 32px); }
+
+.socials { margin-top: 3vh; display: flex; gap: 1vw; }
+.socials a {
+  display: grid; place-items: center;
+  width: clamp(34px, 3.4vw, 48px); height: clamp(34px, 3.4vw, 48px);
+  border: 1px solid var(--line); border-radius: 50%; color: #fff; transition: .25s;
+}
+.socials a .ico { margin: 0; color: #fff; }
+.socials a:hover { background: var(--purple); box-shadow: 0 0 20px var(--purple); }
+
+/* Home photo: full body, head to toe */
+.photo-wrap { position: relative; height: min(78vh, 720px); aspect-ratio: 1086 / 1448; }
+.photo-wrap::before { content: ""; position: absolute; inset: -3%; border: 1px solid var(--line); border-radius: 30px; }
+.photo-ring {
+  width: 100%; height: 100%; overflow: hidden;
+  border: 4px solid var(--purple); border-radius: 24px; background: #1a0840;
+  box-shadow: 0 0 45px var(--purple), inset 0 0 40px rgba(164, 59, 255, .4);
+}
+.photo-ring img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.photo-ring .placeholder { font-family: "Orbitron", sans-serif; font-size: clamp(30px, 6vw, 80px); color: var(--purple); }
+.orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #c06bff, #5a12c9); box-shadow: 0 0 20px var(--purple); animation: float 4s ease-in-out infinite; }
+.orb.o1 { width: 9%; height: 9%; top: 6%; right: 4%; }
+.orb.o2 { width: 7%; height: 7%; bottom: 22%; left: -3%; animation-delay: 1.5s; }
+@keyframes float { 50% { transform: translateY(-12px); } }
+
+/* ============ PERSONAL INFORMATION ============ */
+#personal { gap: 1.6vh; }
+
+.pi-head { flex: none; }
+.pi-head h1 { display: flex; align-items: center; margin-top: .3vh; }
+.pi-head h1 > .ico { margin-right: 1vw; }
+.pi-head h1 > .ico svg { width: 1.1em; height: 1.1em; }
+.pi-head h1 span { margin-left: .3em; }          /* space between "Personal" and "Information" */
+.pi-tag {
+  font-size: clamp(10px, .95vw, 13px);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b9a6ff;
+  opacity: .8;
+}
+
+.pi-intro {
+  max-width: 62vw; margin-top: .6vh;
+  line-height: 1.5; color: var(--muted);
+  font-size: clamp(10px, 1vw, 14px);
+}
+
+/* 4 info columns: fills the free height, no page scroll */
+.pi-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr 1fr;
+  gap: 1.2vw;
+  align-items: stretch;
+}
+.pi-stack { display: flex; flex-direction: column; gap: 1.6vh; min-height: 0; }
+
+.pi-card {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;            /* walang scrollbar */
+  padding: 1.4vh 1.1vw;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(164, 59, 255, .28);
+  border-left: 4px solid var(--purple);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.pi-card::-webkit-scrollbar { display: none; }
+.pi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(140, 90, 255, .28); }
+.pi-card h3 {
+  display: flex; align-items: center;
+  margin-bottom: 1vh; padding-bottom: .8vh;
+  border-bottom: 1px solid rgba(164, 59, 255, .3);
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: #fff;
+}
+
+/* label sa kaliwa, value katabi */
+.pi-card dl { margin: 0; }
+.pi-card dl > div {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  align-items: baseline;
+  gap: .8vw;
+  padding: .5vh 0;                  /* mas masikip para magkasya ang 10-11 rows */
+}
+.pi-card dl > div + div { border-top: 1px dashed rgba(255, 255, 255, .1); }
+.pi-card dt {
+  font-size: clamp(8px, .72vw, 10.5px);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #b9a6ff;
+}
+.pi-card dd {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(10px, .95vw, 14px);
+  font-weight: 600;
+  color: #f1ecff;
+  word-break: break-word;
+}
+
+/* (lumang chips style: pwede nang tanggalin kung hindi na gagamitin) */
+.chips { display: flex; flex-wrap: wrap; gap: .8vh .5vw; }
+.chips span {
+  display: flex; flex-direction: column;
+  padding: .6vh .8vw;
+  border-radius: 14px;
+  background: rgba(164, 59, 255, .15);
+  border: 1px solid rgba(164, 59, 255, .38);
+  font-size: clamp(10px, .95vw, 13px);
+  color: #fff;
+}
+.chips small {
+  font-size: clamp(7px, .62vw, 9px);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #cbb8ff;
+}
+
+/* interests / hobbies / strengths row */
+.pi-extra { flex: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2vw; }
+.pi-card.mini { overflow: visible; padding: 1.1vh 1.1vw; }
+.pi-card.mini h3 { margin-bottom: .8vh; padding-bottom: .5vh; }
+.tags { display: flex; flex-wrap: wrap; gap: .6vh .4vw; }
+.tags span {
+  display: inline-flex; align-items: center;
+  padding: .4vh .8vw; border-radius: 999px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(164, 59, 255, .3);
+  font-size: clamp(9px, .9vw, 13px);
+  transition: .25s;
+}
+.tags span:hover { background: rgba(164, 59, 255, .3); }
+.tags span > .ico { margin-right: .4em; }
+.tags span > .ico svg { width: 1em; height: 1em; }
+
+/* ============ ACHIEVEMENTS ============ */
+.timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; padding: 1vh 0; }
+.timeline::before {
+  content: ""; position: absolute; left: 8%; right: 8%;
+  top: calc(1vh + clamp(22px, 4.5vh, 45px)); height: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+}
+.school { position: relative; text-align: center; }
+.school-logo {
+  display: grid; place-items: center; width: clamp(44px, 9vh, 90px); aspect-ratio: 1;
+  margin: 0 auto; overflow: hidden; border: 3px solid var(--purple); border-radius: 50%;
+  background: #1a0840; box-shadow: 0 0 25px var(--purple);
+}
+.school-logo img { width: 100%; height: 100%; object-fit: contain; }
+.school b { display: block; margin-top: 1vh; font-size: clamp(12px, 1.3vw, 18px); }
+.school small { color: var(--muted); font-size: clamp(10px, 1vw, 14px); }
+.level { font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); font-size: clamp(10px, 1vw, 13px); }
+
+.gallery { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vw; }
+.slot { display: flex; flex-direction: column; min-height: 0; padding: 1.2vh 1vw; }
+.slot p { margin-top: 1vh; text-align: center; font-size: clamp(11px, 1.1vw, 15px); }
+
+/* ============ FAMILY / FRIENDS ============ */
+#family { gap: 1.2vh; overflow: hidden; }
+
+/* compact heading so the pictures get more height */
+#family h1 { font-size: clamp(20px, 2.8vw, 38px); }
+#family h1 span { color: #c084fc; text-shadow: 0 0 18px rgba(192, 132, 252, 0.6); }
+#family .subtitle { letter-spacing: 3px; text-transform: uppercase; opacity: 0.75; font-size: clamp(10px, 1vw, 14px); }
+.family-intro { max-width: 70vw; margin-top: .6vh; line-height: 1.4; color: var(--muted); font-size: clamp(11px, 1.05vw, 15px); }
+
+/* 4 big cards, wide gaps, fills the rest of the screen */
+#family .gallery {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  gap: 2.4vw;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+#family .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 1.4vh 1.1vw 1.6vh;
+  border-radius: 18px;
+  background: linear-gradient(160deg, rgba(168, 85, 247, 0.14), rgba(20, 10, 40, 0.65));
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  text-align: center;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+#family .card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(192, 132, 252, 0.9);
+  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.35);
+}
+
+/* picture: takes ALL free height, text stays at the bottom */
+#family .frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: block;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+#family .frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform .5s ease;
+}
+#family .card:hover .frame img { transform: scale(1.04); }
+#family .frame .placeholder { position: absolute; inset: 0; }
+#family .frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(88, 28, 135, .35), transparent 40%);
+}
+
+/* corner brackets */
+#family .card::before,
+#family .card::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #c084fc;
+  opacity: .8;
+  pointer-events: none;
+}
+#family .card::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; border-top-left-radius: 18px; }
+#family .card::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: 18px; }
+
+/* text below the picture */
+#family .card p {
+  flex: none;
+  margin: 1.2vh 0 0;
+  font-size: clamp(12px, 1.1vw, 16px);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #e9d5ff;
+}
+#family .card p::after {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin: .7vh auto 0;
+  background: #c084fc;
+  border-radius: 2px;
+  transition: width .35s ease;
+}
+#family .card:hover p::after { width: 60px; }
+
+#family .desc {
+  flex: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: .7vh;
+  font-size: clamp(10px, .9vw, 13px);
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* ============ PAGE TRANSITION (wipe) ============ */
+.page-wipe {
+  position: fixed; inset: 0; z-index: 5000;
+  display: grid; place-items: center;
+  pointer-events: none;
+  transform: translateX(-101%);
+  background:
+    radial-gradient(circle at 70% 30%, rgba(192, 107, 255, .55), transparent 55%),
+    linear-gradient(115deg, #1d0645 0%, #5a12c9 50%, #a43bff 100%);
+  box-shadow: 0 0 80px var(--purple);
+}
+.page-wipe span {
+  display: flex; align-items: center; gap: .6em;
+  font-family: "Orbitron", sans-serif; font-weight: 700;
+  font-size: clamp(20px, 3.4vw, 46px);
+  color: #fff; text-shadow: 0 0 24px rgba(255, 255, 255, .6);
+  opacity: 0;
+}
+.page-wipe span .ico svg { width: 1.1em; height: 1.1em; }
+.page-wipe.run { animation: wipe .95s cubic-bezier(.75, 0, .25, 1) forwards; }
+.page-wipe.run span { animation: wipeLabel .95s ease forwards; }
+
+@keyframes wipe {
+  0%        { transform: translateX(-101%); }
+  42%, 58%  { transform: translateX(0); }
+  100%      { transform: translateX(101%); }
+}
+@keyframes wipeLabel {
+  0%, 30%   { opacity: 0; transform: translateY(14px) scale(.96); }
+  45%, 56%  { opacity: 1; transform: none; }
+  70%, 100% { opacity: 0; transform: translateY(-14px) scale(1.02); }
+}
+
+/* ============ PAGE ENTRANCE (staggered) ============ */
+/* 'backwards' = effect only runs before/while animating, so hover effects still work after */
+.page.active .pi-head,
+.page.active .pi-card,
+.page.active .school,
+.page.active .slot,
+.page.active .page-head,
+.page.active > h2,
+.page.active .timeline {
+  animation: rise .7s cubic-bezier(.2, .8, .2, 1) backwards;
+}
+.page.home.active .left  { animation: slideLeft .8s cubic-bezier(.2, .8, .2, 1) .35s backwards; }
+.page.home.active .right { animation: slideRight .8s cubic-bezier(.2, .8, .2, 1) .5s backwards; }
+
+.page.active > :nth-child(1) { animation-delay: .35s; }
+.page.active > :nth-child(2) { animation-delay: .45s; }
+.page.active > :nth-child(3) { animation-delay: .55s; }
+.page.active > :nth-child(4) { animation-delay: .65s; }
+
+.page.active .pi-grid > :nth-child(1) { animation-delay: .5s; }
+.page.active .pi-grid > :nth-child(2) { animation-delay: .6s; }
+.page.active .pi-grid > :nth-child(3) { animation-delay: .7s; }
+.page.active .pi-grid > :nth-child(4) { animation-delay: .8s; }
+.page.active .pi-stack > .pi-card:nth-child(1) { animation-delay: .6s; }
+.page.active .pi-stack > .pi-card:nth-child(2) { animation-delay: .72s; }
+.page.active .pi-extra > :nth-child(1) { animation-delay: .9s; }
+.page.active .pi-extra > :nth-child(2) { animation-delay: 1s; }
+.page.active .pi-extra > :nth-child(3) { animation-delay: 1.1s; }
+
+.page.active .timeline > .school:nth-child(1) { animation-delay: .6s; }
+.page.active .timeline > .school:nth-child(2) { animation-delay: .7s; }
+.page.active .timeline > .school:nth-child(3) { animation-delay: .8s; }
+.page.active .timeline > .school:nth-child(4) { animation-delay: .9s; }
+
+.page.active .gallery > .slot:nth-child(1) { animation-delay: .6s; }
+.page.active .gallery > .slot:nth-child(2) { animation-delay: .72s; }
+.page.active .gallery > .slot:nth-child(3) { animation-delay: .84s; }
+.page.active .gallery > .slot:nth-child(4) { animation-delay: .96s; }
+
+@keyframes rise       { from { opacity: 0; transform: translateY(26px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes slideLeft  { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: none; } }
+@keyframes slideRight { from { opacity: 0; transform: translateX(60px) scale(.96); } to { opacity: 1; transform: none; } }
+
+/* ============ ZOOM VIEWER ============ */
+.zoom-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: none; place-items: center;
+  background: rgba(7, 2, 15, .94);
+  cursor: zoom-out;
+}
+.zoom-overlay.open { display: grid; animation: fadeOnly .25s ease; }
+.zoom-overlay img {
+  max-width: 92vw; max-height: 92vh;
+  width: auto; height: auto; object-fit: contain;
+  border: 2px solid var(--purple); border-radius: 12px;
+  box-shadow: 0 0 40px var(--purple);
+}
+.zoom-close {
+  position: absolute; top: 3vh; right: 3vw;
+  width: 46px; height: 46px;
+  border: 1px solid var(--purple); border-radius: 50%;
+  background: rgba(20, 6, 45, .8); color: #fff;
+  font-size: 28px; line-height: 1; cursor: pointer;
+}
+.zoom-close:hover { background: var(--purple); }
+@keyframes fadeOnly { from { opacity: 0; } to { opacity: 1; } }
+
+/* ============ SMALL SCREENS ============ */
+@media (max-width: 800px) {
+  html, body { overflow: hidden; height: 100%; }
+  nav { width: 100%; border-radius: 24px; padding: .8vh 2vw; }
+  nav ul { flex-wrap: wrap; justify-content: center; gap: 1vw; }
+  nav a { padding: .9vh 3vw; font-size: 12px; }
+  .page.home.active { flex-direction: column; }
+  .photo-wrap { height: 40vh; }
+  .timeline { grid-template-columns: 1fr; }
+  .timeline::before { display: none; }
+
+  /* personal info / achievements: scroll sa loob ng page sa phone */
+  #personal, #achievements { overflow-y: auto; }
+  .pi-grid, .pi-extra { grid-template-columns: 1fr; flex: none; }
+  .pi-card { overflow: visible; }
+  .pi-card dl > div { grid-template-columns: 40% 1fr; padding: .8vh 0; }
+  .pi-card dd { font-size: 13px; }
+  .pi-card dt { font-size: 10px; }
+  .chips span, .tags span { font-size: 12px; padding: .5vh 3vw; }
+
+  #family .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1.2vh 3vw;
+    width: 100%;
   }
-
-  return {
-    restart() {
-      if (!el) return;
-      clearTimeout(timer);
-      w = 0; c = words[0].length; deleting = true;
-      el.textContent = words[0];            // kita agad ang "coding"
-      timer = setTimeout(tick, pause);      // saka pa lang magbubura at magpapalit
-    }
-  };
+  #family .card { height: 100%; }
+  #family .family-intro { display: none; }
+  #family .desc { -webkit-line-clamp: 2; font-size: 10px; }
 }
 
-let typer = null;
-
-/* ============ 6. TEXT KAPAG WALA PANG PICTURE ============ */
-function setupImageFallbacks() {
-  document.querySelectorAll("img[data-fallback]").forEach(img => {
-    const swap = () => {
-      const s = document.createElement("span");
-      s.className = "placeholder";
-      s.textContent = img.dataset.fallback;
-      img.replaceWith(s);
-    };
-    if (img.complete && img.naturalWidth === 0) swap();
-    else img.addEventListener("error", swap);
-  });
+/* respect people who turn animations off */
+@media (prefers-reduced-motion: reduce) {
+  .page-wipe { display: none; }
+  nav.swap a { animation: none; }
+  .page.active *, .page.active { animation: none !important; }
 }
-
-/* ============ 7. ZOOM VIEWER (i-click ang picture para lumaki) ============ */
-let zoomOverlay = null;
-
-function setupZoom() {
-  zoomOverlay = document.createElement("div");
-  zoomOverlay.className = "zoom-overlay";
-  zoomOverlay.innerHTML = '<button type="button" class="zoom-close" aria-label="Close">&times;</button><img alt="">';
-  document.body.appendChild(zoomOverlay);
-  const big = zoomOverlay.querySelector("img");
-
-  const open = (src, alt) => { big.src = src; big.alt = alt || ""; zoomOverlay.classList.add("open"); };
-  const close = () => { zoomOverlay.classList.remove("open"); big.removeAttribute("src"); };
-
-  document.addEventListener("click", e => {
-    const img = e.target.closest && e.target.closest("img[data-zoom]");
-    if (!img) return;
-    e.preventDefault();
-    open(img.currentSrc || img.src, img.alt);
-  });
-  zoomOverlay.addEventListener("click", close);
-  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
-}
-
-/* ============ 8. ARROW KEYS ← → PARA LUMIPAT NG PAGE ============ */
-function setupKeyboardNav() {
-  document.addEventListener("keydown", e => {
-    if (zoomOverlay && zoomOverlay.classList.contains("open")) return;
-    const index = PAGES.findIndex(p => p.id === (queued || currentPage));
-    if (index === -1) return;
-    if (e.key === "ArrowRight" && index < PAGES.length - 1) location.hash = PAGES[index + 1].id;
-    if (e.key === "ArrowLeft" && index > 0) location.hash = PAGES[index - 1].id;
-  });
-}
-
-/* ============ START ============ */
-document.addEventListener("DOMContentLoaded", () => {
-  renderNavbar();
-  renderDecor();
-  setupWipe();
-  fillIcons();
-  setupImageFallbacks();
-  setupZoom();
-  setupKeyboardNav();
-
-  typer = createTyper(document.getElementById("typed"), ["coding", "designing", "learning", "creating"]);
-
-  applyPage(parseHash());                                          // unang bukas: walang wipe
-  window.addEventListener("hashchange", () => goTo(parseHash()));  // paglipat: may wipe
-});
