@@ -161,7 +161,36 @@ nav a.active .ico { color: #fff; }
 @keyframes float { 50% { transform: translateY(-12px); } }
 
 /* ============ PERSONAL INFORMATION ============ */
+/* the info page holds 2 sections (Personal Information + Achievements) */
+#info { position: relative; }
+.info-scroll {
+  position: absolute; inset: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.info-scroll::-webkit-scrollbar { display: none; }
+.info-block {
+  height: 100%;
+  display: flex; flex-direction: column; gap: 2vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
 #personal { gap: 1.6vh; }
+
+/* side dots */
+.info-dots {
+  position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
+  z-index: 3; display: flex; flex-direction: column; gap: 1.4vh;
+}
+.info-dots a {
+  width: 11px; height: 11px; border-radius: 50%;
+  border: 1.5px solid var(--purple); background: transparent;
+  transition: .3s;
+}
+.info-dots a:hover { background: rgba(164, 59, 255, .5); }
+.info-dots a.active { background: var(--purple); box-shadow: 0 0 12px var(--purple); transform: scale(1.35); }
 
 .pi-head { flex: none; }
 .pi-head h1 { display: flex; align-items: center; margin-top: .3vh; }
@@ -443,8 +472,8 @@ nav a.active .ico { color: #fff; }
 .page.active .pi-card,
 .page.active .school,
 .page.active .slot,
-.page.active > div:first-child,
-.page.active > h2,
+.page.active .page-head,
+.page.active .info-block > h2,
 .page.active .timeline {
   animation: rise .7s cubic-bezier(.2, .8, .2, 1) backwards;
 }
@@ -465,6 +494,11 @@ nav a.active .ico { color: #fff; }
 .page.active .pi-extra > :nth-child(1) { animation-delay: .9s; }
 .page.active .pi-extra > :nth-child(2) { animation-delay: 1s; }
 .page.active .pi-extra > :nth-child(3) { animation-delay: 1.1s; }
+
+.page.active .info-block .page-head { animation-delay: .4s; }
+.page.active .info-block .timeline { animation-delay: .5s; }
+.page.active .info-block > h2 { animation-delay: .6s; }
+.page.active .info-dots { animation: fadeOnly .6s ease .9s backwards; }
 
 .page.active .timeline > .school:nth-child(1) { animation-delay: .6s; }
 .page.active .timeline > .school:nth-child(2) { animation-delay: .7s; }
@@ -514,8 +548,10 @@ nav a.active .ico { color: #fff; }
   .timeline { grid-template-columns: 1fr; }
   .timeline::before { display: none; }
 
-  /* personal info: scrolls inside its own page on phones */
-  #personal { overflow-y: auto; }
+  /* info page: scrolls on phones */
+  .info-block { height: auto; min-height: 100%; }
+  .info-scroll { scroll-snap-type: none; }
+  .info-dots { display: none; }
   .pi-grid, .pi-extra { grid-template-columns: 1fr; flex: none; }
   .pi-card { overflow: visible; }
   .pi-card dd { font-size: 13px; }
