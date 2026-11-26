@@ -195,8 +195,7 @@ nav a.active .ico { color: #fff; }
 .pi-card {
   min-height: 0;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--purple) transparent;
+  scrollbar-width: none;            /* walang scrollbar */
   padding: 1.4vh 1.1vw;
   background: rgba(255, 255, 255, .04);
   border: 1px solid rgba(164, 59, 255, .28);
@@ -205,6 +204,7 @@ nav a.active .ico { color: #fff; }
   backdrop-filter: blur(6px);
   transition: transform .25s ease, box-shadow .25s ease;
 }
+.pi-card::-webkit-scrollbar { display: none; }
 .pi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(140, 90, 255, .28); }
 .pi-card h3 {
   display: flex; align-items: center;
@@ -215,16 +215,21 @@ nav a.active .ico { color: #fff; }
 }
 
 .pi-card dl { margin: 0; }
-.pi-card dl > div { padding: .55vh 0; }
+.pi-card dl > div {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1vw;
+  padding: .75vh 0;
+}
 .pi-card dl > div + div { border-top: 1px dashed rgba(255, 255, 255, .1); }
 .pi-card dt {
+  flex: none;
   font-size: clamp(8px, .72vw, 10.5px);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #b9a6ff;
 }
 .pi-card dd {
-  margin: .2vh 0 0;
+  margin: 0;
+  text-align: right;
   font-size: clamp(10px, 1vw, 14px);
   color: #f1ecff;
   word-break: break-word;
