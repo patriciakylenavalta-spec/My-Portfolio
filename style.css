@@ -431,19 +431,29 @@ nav.swap li:nth-child(4) a { animation-delay: .15s; }
 }
 
 /* picture: pumupuno sa buong card */
-/* ============ FAMILY / FRIENDS: TALL FRAMES (override, ilagay sa PINAKADULO) ============ */
+
+ /* ============ FAMILY / FRIENDS ============ */
+#family { gap: 1.2vh; overflow: hidden; }
+
+/* compact heading para mas malaki ang mga frame */
+#family h1 { font-size: clamp(20px, 2.8vw, 38px); }
+#family h1 span { color: #c084fc; text-shadow: 0 0 18px rgba(192, 132, 252, 0.6); }
+#family .subtitle { letter-spacing: 3px; text-transform: uppercase; opacity: 0.75; font-size: clamp(10px, 1vw, 14px); }
+.family-intro { max-width: 70vw; margin-top: .6vh; line-height: 1.4; color: var(--muted); font-size: clamp(11px, 1.05vw, 15px); }
+
+/* 4 matatangkad na frame, may pagitan, may space sa gilid */
 main #family .gallery {
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(4, min(20vw, 380px));  /* lapad ng bawat frame */
-  grid-template-rows: minmax(0, 1fr);                  /* taas = lahat ng libreng espasyo */
-  justify-content: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));  /* pantay na hati */
+  grid-template-rows: minmax(0, 1fr);
   align-items: stretch;
-  gap: 1vw;
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
+  gap: 1.6vw;                      /* pagitan ng bawat frame */
+  width: min(100%, 1400px);
+  margin: 0 auto;                  /* nasa gitna */
+  padding: 0 2vw;                  /* space sa kaliwa at kanan */
+  box-sizing: border-box;
 }
 
 main #family .card {
@@ -452,15 +462,19 @@ main #family .card {
   flex-direction: column;
   justify-content: flex-end;
   width: auto;
+  min-width: 0;
+  max-width: 100%;
   height: 100%;
   min-height: 0;
-  padding: 0;                          /* walang gilid */
+  padding: 0;                      /* walang gilid, puno ang picture */
   overflow: hidden;
   border: 0;
   border-bottom: 3px solid #c084fc;
   border-radius: 14px;
   background: #14082b;
   text-align: left;
+  box-sizing: border-box;
+  transition: transform .35s ease, box-shadow .35s ease;
 }
 main #family .card:hover {
   transform: translateY(-6px);
@@ -487,7 +501,12 @@ main #family .frame img {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  transition: transform .5s ease;
 }
+main #family .card:hover .frame img { transform: scale(1.04); }
+main #family .frame .placeholder { position: absolute; inset: 0; }
+
+/* madilim na gradient sa ibaba para mabasa ang text */
 main #family .frame::after {
   content: "";
   position: absolute;
@@ -502,10 +521,16 @@ main #family .card p {
   margin: 0;
   padding: 0 1vw;
   text-align: left;
+  font-size: clamp(12px, 1.1vw, 16px);
+  font-weight: 600;
   color: #fff;
-  pointer-events: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+  pointer-events: none;            /* para gumana pa rin ang click-to-zoom */
 }
 main #family .card p::after { display: none; }   /* alisin ang maliit na linya */
+
 main #family .desc {
   position: relative; z-index: 2;
   display: -webkit-box;
@@ -514,17 +539,26 @@ main #family .desc {
   overflow: hidden;
   margin: .5vh 0 0;
   padding: 0 1vw 1.6vh;
+  font-size: clamp(10px, .85vw, 13px);
+  line-height: 1.35;
   color: #e9d5ff;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
   pointer-events: none;
 }
 
 /* phone: 2 x 2 */
 @media (max-width: 800px) {
   main #family .gallery {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: 1.2vh 3vw;
+    padding: 0 2vw;
   }
+  main #family .family-intro { display: none; }
+  main #family .desc { -webkit-line-clamp: 2; font-size: 10px; }
+} 
 }
 /* ============ PAGE TRANSITION (wipe) ============ */
 .page-wipe {
