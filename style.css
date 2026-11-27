@@ -431,7 +431,48 @@ nav.swap li:nth-child(4) a { animation-delay: .15s; }
 }
 
 /* picture: pumupuno sa buong card */
-#family .frame {
+/* ============ FAMILY / FRIENDS: TALL FRAMES (override, ilagay sa PINAKADULO) ============ */
+main #family .gallery {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, min(20vw, 380px));  /* lapad ng bawat frame */
+  grid-template-rows: minmax(0, 1fr);                  /* taas = lahat ng libreng espasyo */
+  justify-content: center;
+  align-items: stretch;
+  gap: 1vw;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+main #family .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: auto;
+  height: 100%;
+  min-height: 0;
+  padding: 0;                          /* walang gilid */
+  overflow: hidden;
+  border: 0;
+  border-bottom: 3px solid #c084fc;
+  border-radius: 14px;
+  background: #14082b;
+  text-align: left;
+}
+main #family .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(168, 85, 247, .45);
+}
+
+/* alisin ang corner brackets */
+main #family .card::before,
+main #family .card::after { content: none; }
+
+/* picture: puno ang buong card */
+main #family .frame {
   position: absolute;
   inset: 0;
   display: block;
@@ -439,21 +480,15 @@ nav.swap li:nth-child(4) a { animation-delay: .15s; }
   border-radius: 0;
   overflow: hidden;
 }
-#family .frame img {
+main #family .frame img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  max-height: none;
   object-fit: cover;
   object-position: center top;
-  transition: transform .5s ease;
 }
-#family .card:hover .frame img { transform: scale(1.04); }
-#family .frame .placeholder { position: absolute; inset: 0; }
-
-/* madilim na gradient sa ibaba para mabasa ang text */
-#family .frame::after {
+main #family .frame::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -462,113 +497,35 @@ nav.swap li:nth-child(4) a { animation-delay: .15s; }
 }
 
 /* pangalan at caption sa ibabaw ng picture */
-#family .card p {
+main #family .card p {
   position: relative; z-index: 2;
-  flex: none;
   margin: 0;
   padding: 0 1vw;
   text-align: left;
-  font-size: clamp(12px, 1.1vw, 16px);
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   color: #fff;
-  pointer-events: none;               /* para gumana pa rin ang click-to-zoom */
+  pointer-events: none;
 }
-#family .desc {
+main #family .card p::after { display: none; }   /* alisin ang maliit na linya */
+main #family .desc {
   position: relative; z-index: 2;
-  flex: none;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: .5vh 0 0;
   padding: 0 1vw 1.6vh;
-  font-size: clamp(10px, .85vw, 13px);
-  line-height: 1.35;
   color: #e9d5ff;
   pointer-events: none;
 }
-}
 
-/* picture: takes ALL free height, text stays at the bottom */
-#family .frame {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  display: block;
-  border: 0;
-  border-radius: 12px;
-  overflow: hidden;
+/* phone: 2 x 2 */
+@media (max-width: 800px) {
+  main #family .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1.2vh 3vw;
+  }
 }
-#family .frame img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-height: none;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform .5s ease;
-}
-#family .card:hover .frame img { transform: scale(1.04); }
-#family .frame .placeholder { position: absolute; inset: 0; }
-#family .frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(to top, rgba(88, 28, 135, .35), transparent 40%);
-}
-
-/* corner brackets */
-#family .card::before,
-#family .card::after {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 2px solid #c084fc;
-  opacity: .8;
-  pointer-events: none;
-}
-#family .card::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; border-top-left-radius: 18px; }
-#family .card::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: 18px; }
-
-/* text below the picture */
-#family .card p {
-  flex: none;
-  margin: 1.2vh 0 0;
-  font-size: clamp(12px, 1.1vw, 16px);
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #e9d5ff;
-}
-#family .card p::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 2px;
-  margin: .7vh auto 0;
-  background: #c084fc;
-  border-radius: 2px;
-  transition: width .35s ease;
-}
-#family .card:hover p::after { width: 60px; }
-
-#family .desc {
-  flex: none;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-top: .7vh;
-  font-size: clamp(10px, .9vw, 13px);
-  line-height: 1.35;
-  color: var(--muted);
-}
-
 /* ============ PAGE TRANSITION (wipe) ============ */
 .page-wipe {
   position: fixed; inset: 0; z-index: 5000;
